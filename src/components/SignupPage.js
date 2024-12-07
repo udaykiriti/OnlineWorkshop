@@ -19,6 +19,7 @@ function Signup() {
   const handleRegister = async (e) => {
     e.preventDefault();
 
+    // Password validation regex
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if (!passwordRegex.test(password)) {
@@ -28,11 +29,13 @@ function Signup() {
       return;
     }
 
+    // Password matching check
     if (password !== retypePassword) {
       toast.error("Passwords do not match");
       return;
     }
 
+    // Construct user object to send in POST request
     const user = {
       username,
       email,
@@ -43,14 +46,22 @@ function Signup() {
     };
 
     try {
-      await axios.post("https://onlineworkshop-server-production.up.railway.app/api/auth/signup", user);
+      // Make the POST request to register the user
+      const response = await axios.post(
+        "https://onlineworkshop-server-production.up.railway.app/api/auth/signup",
+        user
+      );
+
+      // Handle successful registration
       toast.success("Registration successful!");
       setTimeout(() => navigate("/"), 3000);
     } catch (error) {
+      // Handle error response
       console.error("There was an error during registration!", error);
 
       if (error.response && error.response.data) {
         const errorMessage = error.response.data;
+
         if (errorMessage === "Username already taken") {
           toast.error("Username already exists");
         } else if (errorMessage === "Email already exists") {
@@ -67,7 +78,7 @@ function Signup() {
   return (
     <div className="login-container">
       <div className="login-box">
-       <img
+        <img
           style={{
             height: "60vh",
             marginLeft: "70px",
@@ -78,8 +89,8 @@ function Signup() {
           }}
           src={signup_image}
           alt="signup"
-        /> 
-        <div className="login-section" style={{ marginRight: "30px", marginTop: "70px"}}>
+        />
+        <div className="login-section" style={{ marginRight: "30px", marginTop: "70px" }}>
           <form className="login-form" onSubmit={handleRegister}>
             <label htmlFor="username">Username</label>
             <input
@@ -169,11 +180,7 @@ function Signup() {
           </div>
         </div>
       </div>
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar={false}
-      />
+      <ToastContainer position="top-center" autoClose={3000} hideProgressBar={false} />
     </div>
   );
 }
