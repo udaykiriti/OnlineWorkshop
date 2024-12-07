@@ -25,7 +25,7 @@ const AdminAttendance = () => {
   const fetchWorkshops = async () => {
     setLoading((prev) => ({ ...prev, workshops: true }));
     try {
-      const response = await fetch("http://localhost:8080/api/workshops");
+      const response = await fetch("https://onlineworkshop-server-production.up.railway.app/api/workshops");
       if (!response.ok) throw new Error("Failed to fetch workshops");
 
       const data = await response.json();
