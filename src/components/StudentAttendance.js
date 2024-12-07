@@ -28,7 +28,7 @@ const StudentAttendance = () => {
   const fetchAttendanceData = async (username) => {
     try {
       const response = await fetch(
-        `http://localhost:8080/api/attendance/user/${username}`
+        `https://onlineworkshop-server-production.up.railway.app/api/attendance/user/${username}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch attendance records");
