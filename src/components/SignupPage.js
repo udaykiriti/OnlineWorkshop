@@ -43,7 +43,7 @@ function Signup() {
     };
 
     try {
-      await axios.post("https://online-workshop-nine.vercel.app/api/auth/signup", user);
+      await axios.post("https://onlineworkshop-server-production.up.railway.app/api/auth/signup", user);
       toast.success("Registration successful!");
       setTimeout(() => navigate("/"), 3000);
     } catch (error) {
