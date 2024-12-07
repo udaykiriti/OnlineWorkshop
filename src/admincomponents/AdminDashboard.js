@@ -33,7 +33,7 @@ const AdminDashboard = () => {
 
   const fetchGenderData = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/users"); 
+      const response = await axios.get("https://onlineworkshop-server-production.up.railway.app/users"); 
       const data = response.data;
 
       const genderCounts = data.reduce((acc, user) => {
