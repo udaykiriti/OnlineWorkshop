@@ -35,7 +35,7 @@ const FacultyViewWorkshops = () => {
       setUsername(storedUsername);
     }
 
-    fetch("http://localhost:8080/api/workshops")
+    fetch("https://onlineworkshop-server-production.up.railway.app/api/workshops")
       .then((response) => response.json())
       .then((data) => {
         setWorkshops(data);
