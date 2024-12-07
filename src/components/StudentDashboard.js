@@ -25,7 +25,7 @@ function StudentDashboard() {
 
   const fetchWorkshops = async (username) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/registration/workshops/${username}`);
+      const response = await fetch(`https://onlineworkshop-server-production.up.railway.app/api/registration/workshops/${username}`);
       const workshops = await response.json();
       setWorkshops(workshops);
       setWorkshopCount(workshops.length);
