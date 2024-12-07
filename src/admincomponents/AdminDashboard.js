@@ -58,7 +58,7 @@ const AdminDashboard = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/users"); 
+      const response = await axios.get("https://onlineworkshop-server-production.up.railway.app/api/users"); 
       const data = response.data;
 
       const roleCounts = data.reduce((acc, user) => {
@@ -85,7 +85,7 @@ const AdminDashboard = () => {
 
   const fetchWorkshopsCount = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/workshops"); 
+      const response = await axios.get("https://onlineworkshop-server-production.up.railway.app/api/workshops"); 
       const data = response.data;
       setTotalWorkshops(data.length); // Set workshops count
     } catch (error) {
