@@ -62,7 +62,7 @@ const ManageUsers = () => {
   const handleDeleteUser = async (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       try {
-        const response = await fetch(`http://localhost:8080/api/users/${id}`, {
+        const response = await fetch(`https://onlineworkshop-server-production.up.railway.app/api/users/${id}`, {
           method: "DELETE",
         });
         if (!response.ok) throw new Error("Failed to delete user.");
@@ -102,7 +102,7 @@ const ManageUsers = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/api/users/${selectedUser.id}`,
+        `https://onlineworkshop-server-production.up.railway.app/api/users/${selectedUser.id}`,
         {
           method: "PUT",
           headers: {
@@ -125,7 +125,7 @@ const ManageUsers = () => {
   const handleAddUser = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8080/api/users", {
+      const response = await fetch("https://onlineworkshop-server-production.up.railway.app/api/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
