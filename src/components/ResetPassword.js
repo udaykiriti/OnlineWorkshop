@@ -5,7 +5,6 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./ForgotPassword.css";
 
-
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -15,23 +14,34 @@ const ResetPassword = () => {
   const handlePasswordReset = async (e) => {
     e.preventDefault();
 
+    // Validate that passwords match
     if (newPassword !== confirmPassword) {
       toast.error("Passwords do not match.");
       return;
     }
 
+    // Get the token from the URL query params
     const token = searchParams.get("token");
     if (!token) {
       toast.error("Invalid or missing token.");
       return;
     }
 
+    // Try to send the reset password request
     try {
-      await axios.post("/api/auth/reset-password", { token, newPassword });
+      const response = await axios.post(
+        "https://onlineworkshop-server-production.up.railway.app/api/auth/reset-password", 
+        { token, newPassword }
+      );
       toast.success("Password reset successfully.");
-      setTimeout(() => navigate("/login"), 3000);
+      setTimeout(() => navigate("/login"), 3000);  // Redirect to login after successful reset
     } catch (err) {
-      toast.error(err.response?.data?.message || "Error resetting password.");
+      // Handle different types of errors
+      if (err.response) {
+        toast.error(err.response?.data?.message || "Error resetting password.");
+      } else {
+        toast.error("An unexpected error occurred.");
+      }
     }
   };
 
