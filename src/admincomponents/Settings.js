@@ -19,7 +19,7 @@ const Settings = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          `http://localhost:8080/api/users/${storedUsername}` 
+          `https://onlineworkshop-server-production.up.railway.app/api/users/${storedUsername}` 
         );
         if (!response.ok) {
           throw new Error("Failed to fetch user profile.");
