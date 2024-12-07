@@ -1,0 +1,173 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  height: 100%;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 95vh;
+}
+
+.login-box {
+  display: flex;
+  width: 85vw;
+  max-width: 1400px;
+  height: 95vh;
+  background-color: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  overflow: hidden;
+  border: 20px solid white;
+}
+
+.image-section {
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+  /* Removed background image styling */
+}
+
+.login-section {
+  width: 50%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-size: 40px 60px;
+  margin-top: 6%;
+}
+.login-section1 {
+  width: 500%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-size: 60px 60px;
+  margin-top: 4%;
+  margin-left: 60px;
+}
+.klu-logo {
+  width: 40px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.login-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.login-header h1 {
+  margin: 0;
+  font-size: 1.6em;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 300px;
+}
+
+.login-form label {
+  font-size: 0.9em;
+  margin-bottom: 2px;
+  display: block;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 6px;
+  font-size: 0.9em;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.next-button {
+  width: 100%;
+  padding: 8px;
+  font-size: 0.9em;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.next-button:hover {
+  background-color: #0056b3;
+}
+
+.registration-link {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.registration-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+.registration-link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .login-box {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .image-section,
+  .login-section {
+    width: 100%;
+  }
+
+  .image-section {
+    height: 10px; /* Adjust height if needed */
+  }
+
+  .login-section {
+    padding: 15px;
+  }
+
+  .login-form {
+    max-width: 100%;
+  }
+}
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.captcha-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.captcha-wrapper canvas {
+  margin-right: 10px;
+}
+
+.refresh-captcha {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}

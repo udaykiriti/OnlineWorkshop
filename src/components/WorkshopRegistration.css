@@ -1,0 +1,175 @@
+.dashboard {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 20px; 
+}
+
+.workshop-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 20px; 
+  margin-top: 20px; 
+}
+
+.workshop-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px; 
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.workshop-image {
+  width: 100%; 
+  height: auto; 
+  border-radius: 5px 5px 0 0; 
+}
+
+.notification {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.search-bar {
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.register-btn:hover,
+.unregister-btn:hover {
+  background-color: #0056b3; 
+  transform: scale(1.05); 
+}
+
+
+.notification {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+.notification.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+.notification.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+
+.search-bar {
+  margin: 20px 0;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+
+.workshop-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+  gap: 8px; /* Small gap between cards for minimal spacing */
+  justify-content: center; /* Center align grid content */
+  padding: 20px;
+}
+
+.workshop-card {
+  background-color: #ffffff; /* Clean white background */
+  border: 1px solid #e0e0e0; /* Subtle border for separation */
+  border-radius: 12px; /* Smooth rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Depth effect */
+  width: 100%; /* Full width to fit the column */
+  max-width: 350px; /* Increased width for the card */
+  height: 450px; /* Increased height for the card */
+  overflow: hidden;
+  text-align: center;
+  padding: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.workshop-card:hover {
+  transform: translateY(-10px); /* Lift effect on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.workshop-image {
+  width: 100%;
+  height: 180px; /* Increased height for prominence */
+  object-fit: cover; /* Maintains aspect ratio */
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.workshop-name {
+  font-size: 20px; /* Larger text for name */
+  font-weight: bold;
+  color: #2c3e50; /* Dark text color for emphasis */
+  margin-bottom: 8px;
+}
+
+.workshop-details {
+  font-size: 14px;
+  color: #7f8c8d; /* Muted gray for secondary info */
+  margin-bottom: 16px;
+}
+
+.register-btn,
+.unregister-btn {
+  background-color: #3498db; /* Modern blue button */
+  color: white;
+  border: none;
+  border-radius: 30px; /* Smooth, rounded button */
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.register-btn:hover,
+.unregister-btn:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight grow effect */
+}
+
+.unregister-btn {
+  background-color: #e74c3c; /* Red button for unregister */
+}
+
+.unregister-btn:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}

@@ -1,0 +1,33 @@
+/* src/NotFound.css */
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; 
+  background-color: #182636; 
+  color: #e0ced0; 
+  font-family: "Arial", sans-serif; 
+  text-align: center;
+}
+
+.not-found h1 {
+  font-size: 4rem; 
+  margin: 0; 
+}
+
+.not-found p {
+  font-size: 1.5rem; 
+  margin-top: 10px; 
+}
+
+.not-found a {
+  margin-top: 20px; 
+  text-decoration: none; 
+  color: #e4e8ec;
+  font-weight: bold; 
+}
+
+.not-found a:hover {
+  text-decoration: underline;
+}

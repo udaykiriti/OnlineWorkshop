@@ -1,0 +1,234 @@
+:root {
+  --primary-color: #004080;
+  --secondary-color: #ffffff;
+  --accent-color: #ffd700;
+  --background-color: #f0f0f0;
+  --text-color: #333333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.admin-title {
+  color: white;
+}
+body {
+  font-family: "Arial", sans-serif;
+  background: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.dashboard {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px; 
+  height: 100vh;
+  background-color: var(--primary-color);
+  padding: 20px;
+  color: var(--secondary-color);
+  position: fixed;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: var(--secondary-color);
+  margin-bottom: 10px;
+  transition: background-color 0.3s, transform 0.2s;
+  border-radius: 5px;
+}
+
+.sidebar a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+}
+
+.dashboard-content {
+  flex-grow: 1;
+  margin-left: 250px; 
+  padding: 20px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--secondary-color);
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px; 
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+}
+
+.logout-btn {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #e6c200;
+}
+
+.dashboard-content h3 {
+  margin: 20px 0 15px; 
+  color: var(--primary-color);
+}
+
+.workshop-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(600px, 1fr)
+  ); 
+  gap: 40px; 
+  margin-top: 50px; 
+}
+
+.workshop-card {
+  position: relative;
+  background-color: var(--secondary-color);
+  padding: 50px; 
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); 
+  text-align: center;
+  border-radius: 5px; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.workshop-card:hover {
+  transform: scale(1.25); 
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.35); 
+}
+
+.workshop-card img {
+  width: 100%; 
+  height: auto; 
+  border-radius: 0px; 
+}
+
+.workshop-card strong {
+  font-size: 2em; 
+  display: block; 
+  margin-bottom: 25px; 
+}
+
+.workshop-card p {
+  font-size: 1.75em; 
+  margin: 20px 0; 
+}
+
+.workshop-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1); 
+  border-radius: 25px; 
+  z-index: 0; 
+}
+
+.workshop-card > * {
+  position: relative; 
+  z-index: 1; 
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 10px 15px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.search-bar {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px; 
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; 
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #333;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}

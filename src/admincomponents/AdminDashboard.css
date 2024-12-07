@@ -1,0 +1,483 @@
+:root {
+  --primary-color: #004080;
+  --secondary-color: #ffffff;
+  --accent-color: #ffd700;
+  --background-color: #f0f0f0;
+  --text-color: #333333;
+}
+.admin-title {
+  color: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.dashboard {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: orange;
+  padding: 20px;
+  color: white;
+  position: fixed;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.sidebar button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  color: var(--secondary-color);
+  margin-bottom: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  border-radius: 5px;
+}
+
+.sidebar button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+}
+
+.dashboard-content {
+  flex-grow: 1;
+  margin-left: 250px;
+  padding: 20px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--secondary-color);
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.logout-btn {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #e6c200;
+}
+
+.dashboard-content h3 {
+  margin: 20px 0 15px;
+  color: var(--primary-color);
+}
+
+.workshop-form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.workshop-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+.workshop-form input[type="text"],
+.workshop-form input[type="date"],
+.workshop-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.workshop-form textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.workshop-form .submit-btn {
+  margin-top: 15px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.workshop-form .submit-btn:hover {
+  background-color: #003366;
+}
+
+.workshops-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.workshops-table th,
+.workshops-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.workshops-table th {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.workshops-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #f9f9f9;
+  padding: 40px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  color: #aaa;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #d9534f;
+}
+
+.notification {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: none;
+}
+
+.notification.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.notification.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.manage-users {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #f4efef;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.users-table th,
+.users-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.users-table th {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.users-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+button {
+  padding: 8px 12px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table th {
+  background-color: #225184;
+  color: white;
+  padding: 10px;
+  text-align: left;
+}
+
+.users-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.users-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+
+
+
+
+
+
+.charts-container {
+  display: flex;
+  flex-wrap: nowrap; 
+  justify-content: space-evenly; 
+  gap: 30px; 
+  margin-top: 40px; 
+  padding: 20px;
+  align-items: center; 
+  height: 450px; 
+  background-color: #f0f0f0; 
+  border-radius: 1px; 
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cfd4d9 #eef2f6; 
+}
+
+.chart-container {
+  flex-shrink: 0; 
+  width: 30%; 
+  max-width: 350px; 
+  height: 100%; 
+  border-radius: 12px; 
+  background-color: #f0f0f0; 
+  padding: 20px;
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between; 
+  align-items: center; 
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.chart-container h4 {
+  font-size: 1.3rem; 
+  color: #2b2b2b; 
+  font-weight: 600; 
+  margin-bottom: 15px; 
+  letter-spacing: 0.5px; 
+}
+
+.chart-container canvas {
+  max-width: 100%; 
+  max-height: 85%; 
+  object-fit: contain; 
+}
+
+.chart-container:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); 
+}
+
+.chart-container p {
+  font-size: 1.1rem;
+  color: #777;
+  margin-top: 10px; 
+}
+
+.charts-container::-webkit-scrollbar {
+  height: 10px;
+}
+
+.charts-container::-webkit-scrollbar-thumb {
+  background: #cfd4d9; 
+  border-radius: 5px; 
+}
+
+.charts-container::-webkit-scrollbar-track {
+  background: #eef2f6; 
+}
+
+@media (max-width: 1024px) {
+  .charts-container {
+    flex-wrap: wrap; 
+    height: auto; 
+    justify-content: center; 
+    padding: 15px; 
+  }
+
+  .chart-container {
+    width: 80%;
+    margin-bottom: 20px; 
+  }
+
+  .chart-container canvas {
+    max-height: 250px; 
+  }
+}
+
+.charts-container {
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.stat-card {
+  flex-shrink: 0;
+  width: 20%;
+  min-width: 150px;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card h4 {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 10px 0 5px 0;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1890FF;
+}
+
+.stat-card .anticon {
+  font-size: 48px;
+  color: #1890FF;
+  margin-bottom: 10px;
+}
