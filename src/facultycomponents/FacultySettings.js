@@ -58,7 +58,7 @@ const FacultySettings = () => {
   const handleUpdateField = async (field) => {
     try {
       const response = await fetch(
-        `http://localhost:8080/api/users/${facultyUsername}`, 
+        `https://onlineworkshop-server-production.up.railway.app/api/users/${facultyUsername}`, 
         {
           method: "PUT",
           headers: {
