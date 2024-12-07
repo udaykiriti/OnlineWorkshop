@@ -24,7 +24,7 @@ const StudentSettings = () => {
   const fetchStudentProfile = async (username) => {
     try {
       const response = await fetch(
-        `http://localhost:8080/api/users/${username}` 
+        `https://onlineworkshop-server-production.up.railway.app/api/users/${username}` 
       );
       if (!response.ok) {
         throw new Error("Failed to fetch student profile.");
@@ -60,7 +60,7 @@ const StudentSettings = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/api/users/${studentProfile.username}`,
+        `https://onlineworkshop-server-production.up.railway.app/api/users/${studentProfile.username}`,
         {
           method: "PUT",
           headers: {
