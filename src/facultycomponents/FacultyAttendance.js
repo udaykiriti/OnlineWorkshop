@@ -40,7 +40,7 @@ const FacultyAttendance = () => {
 
     const fetchWorkshops = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/workshops");
+        const response = await fetch("https://onlineworkshop-server-production.up.railway.app/api/workshops");
         if (!response.ok) {
           throw new Error("Failed to fetch workshops");
         }
