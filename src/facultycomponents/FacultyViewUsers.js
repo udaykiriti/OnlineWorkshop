@@ -25,7 +25,7 @@ const FacultyViewUsers = () => {
     const fetchUsers = async () => {
       setLoading(true);
       try {
-        const response = await fetch("http://localhost:8080/api/users");
+        const response = await fetch("https://onlineworkshop-server-production.up.railway.app/api/users");
         if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();
         setUsers(data);
