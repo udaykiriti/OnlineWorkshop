@@ -58,7 +58,7 @@ const FacultyViewWorkshops = () => {
 
   const handleDeleteWorkshop = (id) => {
     if (window.confirm("Are you sure you want to delete this workshop?")) {
-      fetch(`http://localhost:8080/api/workshops/${id}`, {
+      fetch(`https://onlineworkshop-server-production.up.railway.app/api/workshops/${id}`, {
         method: "DELETE",
       })
         .then((response) => {
@@ -103,7 +103,7 @@ const FacultyViewWorkshops = () => {
       formData.append(key, newWorkshop[key]);
     }
 
-    fetch("http://localhost:8080/api/workshops", {
+    fetch("https://onlineworkshop-server-production.up.railway.app/api/workshops", {
       method: "POST",
       body: formData,
     })
@@ -133,7 +133,7 @@ const FacultyViewWorkshops = () => {
       formData.append(key, selectedWorkshop[key]);
     }
 
-    fetch(`http://localhost:8080/api/workshops/${selectedWorkshop.id}`, {
+    fetch(`https://onlineworkshop-server-production.up.railway.app/api/workshops/${selectedWorkshop.id}`, {
       method: "PUT",
       body: formData,
     })
