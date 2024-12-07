@@ -70,7 +70,7 @@ const FacultyAttendance = () => {
     if (workshopId) {
       try {
         const studentsResponse = await fetch(
-          `http://localhost:8080/api/attendance/workshop/${workshopId}/participants`
+          `https://onlineworkshop-server-production.up.railway.app/api/attendance/workshop/${workshopId}/participants`
         );
         if (!studentsResponse.ok) {
           throw new Error("Failed to fetch registered students");
@@ -109,7 +109,7 @@ const FacultyAttendance = () => {
     try {
       const responses = await Promise.all(
         attendanceData.map((attendance) => {
-          return fetch("http://localhost:8080/api/attendance/mark", {
+          return fetch("https://onlineworkshop-server-production.up.railway.app/api/attendance/mark", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -144,7 +144,7 @@ const FacultyAttendance = () => {
     if (selectedWorkshop) {
       try {
         const response = await fetch(
-          `http://localhost:8080/api/attendance/workshop/${selectedWorkshop}`
+          `https://onlineworkshop-server-production.up.railway.app/api/attendance/workshop/${selectedWorkshop}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch posted attendance data");
