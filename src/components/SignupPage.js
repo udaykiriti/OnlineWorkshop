@@ -19,14 +19,6 @@ function Signup() {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    // Password validation regex
-    if (!passwordRegex.test(password)) {
-      toast.error(
-        "Password must be at least 8 characters, include uppercase, lowercase, number, and special character"
-      );
-      return;
-    }
-
     // Password matching check
     if (password !== retypePassword) {
       toast.error("Passwords do not match");
