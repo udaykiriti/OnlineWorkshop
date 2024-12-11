@@ -20,8 +20,6 @@ function Signup() {
     e.preventDefault();
 
     // Password validation regex
-    const passwordRegex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if (!passwordRegex.test(password)) {
       toast.error(
         "Password must be at least 8 characters, include uppercase, lowercase, number, and special character"
