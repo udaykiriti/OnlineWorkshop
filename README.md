@@ -15,7 +15,6 @@ This repository contains the frontend client for the Online Workshop application
 ## 🚀 Features
 
 - **Responsive UI:** Smooth, intuitive user interface for workshop browsing and participation.
-- **Real-Time Updates:** Live session tracking and chat via WebSocket integration.
 - **User Authentication:** Secure login, signup, and session handling.
 - **Admin Controls:** Access and manage workshop sessions with ease.
 
@@ -25,7 +24,6 @@ This repository contains the frontend client for the Online Workshop application
 
 - **React:** Core framework for building the UI.
 - **Redux / Context API:** State management (if applicable).
-- **WebSocket:** Real-time communication with backend.
 - **Axios / Fetch:** API requests to the backend server.
 - **CSS / Styled Components:** Styling and layout.
 
