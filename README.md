@@ -2,8 +2,6 @@
 
 <p align="center">
   <img src="https://media.giphy.com/media/3o7aD4pQZ7xUWL3G7i/giphy.gif" width="250" alt="3D React Animation" />
-  <br />
-  <img src="https://media.giphy.com/media/26xBMuHNg3pXChmWc/giphy.gif" width="200" alt="3D UI Interaction" />
 </p>
 
 ---
