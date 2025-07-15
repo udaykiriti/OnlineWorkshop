@@ -2,7 +2,6 @@ import React from "react";
 import ChatBot from "react-simple-chatbot";
 import { ThemeProvider } from "styled-components";
 
-// Define the theme for the chatbot
 const theme = {
   background: "#f5f5f5",
   fontFamily: "Helvetica, sans-serif",
