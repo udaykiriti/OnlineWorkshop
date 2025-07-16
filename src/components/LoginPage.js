@@ -8,7 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 import "./LoginPage.css";
 import login_image from "./6101073.jpg";
 
-
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -26,11 +25,9 @@ function Login() {
     setCaptcha(captchaText);
     drawCaptcha(captchaText);
   }, []);
-
   useEffect(() => {
     generateCaptcha();
   }, [generateCaptcha]);
-
   const drawCaptcha = (text) => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
@@ -42,7 +39,6 @@ function Login() {
     context.fillStyle = "black";
     context.fillText(text, canvas.width / 2, canvas.height / 1.5);
   };
-
   const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -52,7 +48,6 @@ function Login() {
       generateCaptcha();
       return;
     }
-
     try {
       const response = await axios.post(
         "https://onlineworkshop-server-production.up.railway.app/api/auth/login",
@@ -82,7 +77,6 @@ function Login() {
       toast.error("Login failed: Invalid credentials", { position: "top-center" });
     }
   };
-
   return (
     <div className="login-container">
       <ToastContainer />
@@ -116,7 +110,6 @@ function Login() {
                 className="input-field"
               />
             </div>
-
             <div className="input-group">
               <label htmlFor="password">Password</label>
               <input
@@ -129,7 +122,6 @@ function Login() {
                 className="input-field"
               />
             </div>
-
             <div className="input-group captcha-group">
               <label>Captcha</label>
               <div className="captcha-wrapper">
@@ -162,11 +154,9 @@ function Login() {
                 className="input-field"
               />
             </div>
-
             <a href="/forgot-password" className="forgot-password">
               Forgot Password?
             </a>
-
             <button type="submit" className="next-button" disabled={isLoading}>
               Login
             </button>
@@ -177,7 +167,6 @@ function Login() {
               <Circles height="50" width="50" color="#4fa94d" ariaLabel="loading" />
             </div>
           )}
-
           <div className="registration-link">
             <a href="/signup">Registration</a>
           </div>
@@ -186,5 +175,4 @@ function Login() {
     </div>
   );
 }
-
 export default Login;
