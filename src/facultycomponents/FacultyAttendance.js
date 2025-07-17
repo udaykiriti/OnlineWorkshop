@@ -329,5 +329,4 @@ const FacultyAttendance = () => {
     </div>
   );
 };
-
 export default FacultyAttendance;
