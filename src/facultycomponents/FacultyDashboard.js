@@ -4,11 +4,9 @@ import { useNavigate } from "react-router-dom";
 import profileIcon from "./profile-icon.jpg";
 import { HomeOutlined, UnorderedListOutlined, AppstoreAddOutlined, CheckCircleOutlined, UserOutlined } from "@ant-design/icons";
 
-
 const FacultyDashboard = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState(""); 
-
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
     if (storedUsername) {
@@ -24,7 +22,6 @@ const FacultyDashboard = () => {
   const handleNavigation = (path) => {
     navigate(path);
   };
-
   return (
     <div className="dashboard1">
       <div className="sidebar">
@@ -63,5 +60,4 @@ const FacultyDashboard = () => {
     </div>
   );
 };
-
 export default FacultyDashboard;
