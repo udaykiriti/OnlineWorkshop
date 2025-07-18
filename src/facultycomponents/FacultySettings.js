@@ -206,5 +206,4 @@ const FacultySettings = () => {
     </div>
   );
 };
-
 export default FacultySettings;
