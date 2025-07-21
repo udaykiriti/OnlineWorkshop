@@ -18,7 +18,6 @@ const FacultyDashboard = () => {
     localStorage.removeItem("username");
     navigate("/login");
   };
-
   const handleNavigation = (path) => {
     navigate(path);
   };
