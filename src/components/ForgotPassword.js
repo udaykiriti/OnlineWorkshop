@@ -16,7 +16,6 @@ const ForgotPassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!validateEmail(email)) {
       toast.error("Please enter a valid email address.");
       return;
@@ -37,7 +36,6 @@ const ForgotPassword = () => {
       );
 
       if (!response.ok) throw new Error("Failed to send reset link.");
-
       toast.success("Reset link sent to your email.");
       setTimeout(() => {
         navigate("/login");
