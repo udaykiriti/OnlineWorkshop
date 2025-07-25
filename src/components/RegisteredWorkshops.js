@@ -98,23 +98,19 @@ const RegisteredWorkshops = () => {
       return true; 
     }
   };
-
   const filteredWorkshops = registeredWorkshops.filter((workshop) =>
     workshop.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
   const totalPages = Math.ceil(filteredWorkshops.length / itemsPerPage);
   const paginatedWorkshops = filteredWorkshops.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
-
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   };
-
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
@@ -256,5 +252,4 @@ const RegisteredWorkshops = () => {
     </div>
   );
 };
-
 export default RegisteredWorkshops;
