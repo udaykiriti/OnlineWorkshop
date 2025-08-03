@@ -15,11 +15,11 @@ const theme = {
 };
 
 const steps = [
-  // {
-  //   id: "1",
-  //   message: "Hello! How can I assist you today?",
-  //   trigger: "2",
-  // },
+  {
+    id: "1",
+    message: "Hello! How can I assist you today?",
+    trigger: "2",
+  },
   // {
   //   id: "2",
   //   user: true,
