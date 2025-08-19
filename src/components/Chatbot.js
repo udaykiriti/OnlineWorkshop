@@ -20,31 +20,6 @@ const steps = [
     message: "Hello! How can I assist you today?",
     trigger: "2",
   },
-  // {
-  //   id: "2",
-  //   user: true,
-  //   trigger: "3",
-  // },
-  // {
-  //   id: "3",
-  //   message: "You said: {previousValue}. How can I help further?",
-  //   trigger: "4",
-  // },
-  // {
-  //   id: "4",
-  //   message: "Is there anything else I can assist with?",
-  //   trigger: "5",
-  // },
-  // {
-  //   id: "5",
-  //   user: true,
-  //   trigger: "6",
-  // },
-  // {
-  //   id: "6",
-  //   message: "Thank you! Have a great day!",
-  //   end: true,
-  // },
 ];
 
 const Chatbot = () => {
