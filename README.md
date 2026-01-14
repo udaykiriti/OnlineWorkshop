@@ -2,8 +2,8 @@
 
 <div align="center">
 
-[![Build Status](https://github.com/udaykiriti/onlineworkshop-frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/udaykiriti/onlineworkshop-frontend/actions)
-[![Docker Build](https://github.com/udaykiriti/onlineworkshop-frontend/actions/workflows/docker-build.yml/badge.svg)](https://github.com/udaykiriti/onlineworkshop-frontend/actions)
+[![Build Status](https://github.com/udaykiriti/OnlineWorkshop/actions/workflows/ci.yml/badge.svg)](https://github.com/udaykiriti/OnlineWorkshop/actions)
+[![Docker Build](https://github.com/udaykiriti/OnlineWorkshop/actions/workflows/docker-build.yml/badge.svg)](https://github.com/udaykiriti/OnlineWorkshop/actions)
 [![React](https://img.shields.io/badge/react-%5E18.2.0-61dafb.svg?style=flat&logo=react)](https://reactjs.org/)
 [![Node](https://img.shields.io/badge/node-%3E%3D20.0.0-339933.svg?style=flat&logo=node.js)](https://nodejs.org/)
 [![Docker](https://img.shields.io/badge/docker-ready-2496ED.svg?style=flat&logo=docker)](https://www.docker.com/)
