@@ -3,7 +3,8 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./ForgotPassword.css";
+import "./LoginPage.css";
+import login_image from "./6101073.jpg";
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState("");
@@ -29,12 +30,12 @@ const ResetPassword = () => {
 
     // Try to send the reset password request
     try {
-      const response = await axios.post(
+      await axios.post(
         "https://onlineworkshop-server-production.up.railway.app/api/auth/reset-password", 
         { token, newPassword }
       );
       toast.success("Password reset successfully.");
-      setTimeout(() => navigate("/login"), 3000);  // Redirect to login after successful reset
+      setTimeout(() => navigate("/"), 3000);  // Redirect to login after successful reset
     } catch (err) {
       // Handle different types of errors
       if (err.response) {
@@ -46,29 +47,49 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="reset-password-container">
-      <h2>Reset Your Password</h2>
-      <form onSubmit={handlePasswordReset}>
-        <div>
-          <label>New Password:</label>
-          <input
-            type="password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            required
-          />
+    <div className="login-container">
+      <div className="login-card">
+        <div className="login-image-container">
+          <img src={login_image} alt="Reset Password" className="login-image" />
+          <div className="image-overlay"></div>
         </div>
-        <div>
-          <label>Confirm Password:</label>
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
+        <div className="login-form-container">
+          <div className="login-header">
+            <h2>Reset Password</h2>
+          </div>
+          <p className="subtitle">Enter your new password below.</p>
+          <form className="login-form" onSubmit={handlePasswordReset}>
+            <div className="input-group">
+              <label htmlFor="new-password">New Password</label>
+              <input
+                id="new-password"
+                type="password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                required
+                className="input-field"
+                placeholder="Enter new password"
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="confirm-password">Confirm Password</label>
+              <input
+                id="confirm-password"
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+                className="input-field"
+                placeholder="Confirm new password"
+              />
+            </div>
+            <button type="submit" className="login-button">Reset Password</button>
+          </form>
+          <div className="registration-link">
+            <a href="/">Back to Login</a>
+          </div>
         </div>
-        <button type="submit">Reset Password</button>
-      </form>
+      </div>
       <ToastContainer
         position="top-center"
         autoClose={3000}

@@ -80,22 +80,15 @@ function Login() {
   return (
     <div className="login-container">
       <ToastContainer />
-      <div className="login-box">
-        <img
-          style={{
-            height: "60vh",
-            marginLeft: "70px",
-            marginTop: "100px",
-            paddingTop: "40px",
-            display: "flex",
-            alignItems: "center",
-          }}
-          src={login_image}
-          alt="Login"
-        />
-        <div className="image-section" />
-        <div className="login-section1" style={{ marginRight: "190px" }}>
-          <div className="login-header"></div>
+      <div className="login-card">
+        <div className="login-image-container">
+          <img src={login_image} alt="Login" className="login-image" />
+          <div className="image-overlay"></div>
+        </div>
+        <div className="login-form-container">
+          <div className="login-header">
+             <h2>Welcome Back!</h2>
+          </div>
           <p className="subtitle">The key to happiness is to sign in.</p>
           <form className="login-form" onSubmit={handleLogin}>
             <div className="input-group">
@@ -129,18 +122,10 @@ function Login() {
                   ref={canvasRef}
                   width={150}
                   height={50}
-                  style={{
-                    border: "1px solid black",
-                    marginBottom: "10px",
-                    marginRight: "10px",
-                  }}
+                  className="captcha-canvas"
                 />
                 <FaSyncAlt
-                  size={24}
-                  color="#000"
-                  style={{
-                    cursor: "pointer",
-                  }}
+                  className="refresh-icon"
                   onClick={generateCaptcha}
                   title="Refresh CAPTCHA"
                 />
@@ -154,21 +139,24 @@ function Login() {
                 className="input-field"
               />
             </div>
-            <a href="/forgot-password" className="forgot-password">
-              Forgot Password?
-            </a>
-            <button type="submit" className="next-button" disabled={isLoading}>
-              Login
+            <div className="form-footer">
+                <a href="/forgot-password" className="forgot-password">
+                Forgot Password?
+                </a>
+            </div>
+            <button type="submit" className="login-button" disabled={isLoading}>
+              {isLoading ? "Logging in..." : "Login"}
             </button>
           </form>
 
           {isLoading && (
-            <div className="loader">
+            <div className="loader-container">
               <Circles height="50" width="50" color="#4fa94d" ariaLabel="loading" />
             </div>
           )}
           <div className="registration-link">
-            <a href="/signup">Registration</a>
+            <span>Don't have an account? </span>
+            <a href="/signup">Register</a>
           </div>
         </div>
       </div>

@@ -37,7 +37,7 @@ function Signup() {
 
     try {
       // Make the POST request to register the user
-      const response = await axios.post(
+      await axios.post(
         "https://onlineworkshop-server-production.up.railway.app/api/auth/signup",
         user
       );
@@ -67,106 +67,117 @@ function Signup() {
 
   return (
     <div className="login-container">
-      <div className="login-box">
-        <img
-          style={{
-            height: "60vh",
-            marginLeft: "70px",
-            marginTop: "100px",
-            paddingTop: "40px",
-            display: "flex",
-            alignItems: "center",
-          }}
-          src={signup_image}
-          alt="signup"
-        />
-        <div className="login-section" style={{ marginRight: "30px", marginTop: "70px" }}>
+      <div className="login-card">
+        <div className="login-image-container">
+          <img src={signup_image} alt="signup" className="login-image" />
+        </div>
+        <div className="login-form-container">
+            <div className="login-header">
+                <h2>Create Account</h2>
+            </div>
           <form className="login-form" onSubmit={handleRegister}>
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              placeholder="Enter your username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              className="input-field"
-            />
+            <div className="input-group">
+                <label htmlFor="username">Username</label>
+                <input
+                type="text"
+                id="username"
+                placeholder="Enter your username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+                className="input-field"
+                />
+            </div>
 
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="input-field"
-            />
+            <div className="input-group">
+                <label htmlFor="email">Email</label>
+                <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="input-field"
+                />
+            </div>
 
-            <label htmlFor="phoneNumber">Phone Number</label>
-            <input
-              type="text"
-              id="phoneNumber"
-              placeholder="Enter your phone number"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              required
-              className="input-field"
-            />
+            <div className="input-group">
+                <label htmlFor="phoneNumber">Phone Number</label>
+                <input
+                type="text"
+                id="phoneNumber"
+                placeholder="Enter your phone number"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                required
+                className="input-field"
+                />
+            </div>
 
-            <label htmlFor="dob">Date of Birth</label>
-            <input
-              type="date"
-              id="dob"
-              value={dob}
-              onChange={(e) => setDob(e.target.value)}
-              required
-              className="input-field"
-            />
+            <div className="input-row">
+                <div className="input-group half-width">
+                    <label htmlFor="dob">Date of Birth</label>
+                    <input
+                    type="date"
+                    id="dob"
+                    value={dob}
+                    onChange={(e) => setDob(e.target.value)}
+                    required
+                    className="input-field"
+                    />
+                </div>
 
-            <label htmlFor="gender">Gender</label>
-            <select
-              id="gender"
-              value={gender}
-              onChange={(e) => setGender(e.target.value)}
-              required
-              className="input-field"
-            >
-              <option value="">Select Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Other">Other</option>
-            </select>
+                <div className="input-group half-width">
+                    <label htmlFor="gender">Gender</label>
+                    <select
+                    id="gender"
+                    value={gender}
+                    onChange={(e) => setGender(e.target.value)}
+                    required
+                    className="input-field"
+                    >
+                    <option value="">Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
 
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="input-field"
-            />
+            <div className="input-group">
+                <label htmlFor="password">Password</label>
+                <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="input-field"
+                />
+            </div>
 
-            <label htmlFor="retypePassword">Retype Password</label>
-            <input
-              type="password"
-              id="retypePassword"
-              placeholder="Retype your password"
-              value={retypePassword}
-              onChange={(e) => setRetypePassword(e.target.value)}
-              required
-              className="input-field"
-            />
+            <div className="input-group">
+                <label htmlFor="retypePassword">Retype Password</label>
+                <input
+                type="password"
+                id="retypePassword"
+                placeholder="Retype your password"
+                value={retypePassword}
+                onChange={(e) => setRetypePassword(e.target.value)}
+                required
+                className="input-field"
+                />
+            </div>
 
-            <button type="submit" className="next-button">
+            <button type="submit" className="login-button">
               Register
             </button>
           </form>
           <div className="registration-link">
-            <a href="/">Back to Login</a>
+            <span>Already have an account? </span>
+            <a href="/">Login</a>
           </div>
         </div>
       </div>
