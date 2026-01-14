@@ -12,8 +12,7 @@
 </div>
 
 <p align="center">
-  <img src="https://media.giphy.com/media/3o7aD4pQZ7xUWL3G7i/giphy.gif" width="45%" alt="React Animation" />
-  <img src="https://media.giphy.com/media/UxTZDNv0Zej4s/giphy.gif" width="45%" alt="Coding Animation" />
+  <img src="https://media.giphy.com/media/hzxvW5s5c30Ag/giphy.gif" width="100%" style="max-width: 600px;" alt="Online Workshop Animation" />
 </p>
 
 <p align="center">
