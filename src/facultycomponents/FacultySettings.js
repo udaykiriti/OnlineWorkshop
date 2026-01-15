@@ -109,7 +109,7 @@ const FacultySettings = () => {
         <button onClick={() => navigate("/faculty-attendance")}>
           <CheckCircleOutlined style={{ marginRight: "8px" }} />Attendance
         </button>
-        <button onClick={() => navigate("/faculty-settings")}>
+        <button onClick={() => navigate("/faculty-settings")} className="active">
           <UserOutlined style={{ marginRight: "8px" }} />Profile
         </button>
       </div>

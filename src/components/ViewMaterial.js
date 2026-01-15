@@ -1,4 +1,5 @@
 import React from "react";
+import "./ViewMaterial.css";
 
 const ViewMaterial = ({ pdfPath }) => {
   return (

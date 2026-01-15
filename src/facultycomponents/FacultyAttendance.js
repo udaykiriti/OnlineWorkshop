@@ -180,7 +180,7 @@ const FacultyAttendance = () => {
           <AppstoreAddOutlined style={{ marginRight: "8px" }} />
           View Workshops
         </button>
-        <button onClick={() => navigate("/faculty-attendance")}>
+        <button onClick={() => navigate("/faculty-attendance")} className="active">
           <UnorderedListOutlined style={{ marginRight: "8px" }} />
           Attendance
         </button>

@@ -178,9 +178,9 @@ const RegisteredWorkshops = () => {
         {registeredWorkshops.length === 0 ? (
           <p>No registered workshops found.</p>
         ) : (
-          <ul className="registered-workshop-list">
+          <div className="registered-workshop-list">
             {paginatedWorkshops.map((workshop) => (
-              <li key={workshop.id} className="registered-workshop-item">
+              <div key={workshop.id} className="registered-workshop-item">
                 <img
                   src={backgroundImg}
                   alt="Workshop"
@@ -224,9 +224,9 @@ const RegisteredWorkshops = () => {
                 >
                   Unregister
                 </button>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         )}
         <div className="pagination">
           <button

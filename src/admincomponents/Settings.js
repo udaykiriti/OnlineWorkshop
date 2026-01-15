@@ -95,7 +95,7 @@ const Settings = () => {
         <button onClick={() => navigate("/manage-users")}>Manage Users</button>
         <button onClick={() => navigate("/faculty-management")}>Faculty Management</button>
         <button onClick={() => navigate("/admin-attendance")}>Admin Attendance</button>
-        <button onClick={() => navigate("/settings")}>Profile</button>
+        <button onClick={() => navigate("/settings")} className="active">Profile</button>
       </div>
       <div className="dashboard-content">
         <div className="dashboard-header">

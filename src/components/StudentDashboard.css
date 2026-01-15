@@ -1,365 +1,296 @@
-.dashboard {
-  display: flex;
-  height: 100vh;
-  font-family: Arial, sans-serif;
+/* Modern and Sleek Student Dashboard CSS */
+
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #2c3e50;
+  --accent-color: #1abc9c;
+  --bg-color: #f4f7f6;
+  --text-color: #333;
+  --sidebar-width: 260px;
+  --card-bg: #ffffff;
+  --error-color: #e74c3c;
+  --success-color: #2ecc71;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+}
+
+.dashboard1 {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Sidebar Styles */
 .sidebar {
-  width: 250px;
-  background-color: #2c3e50;
-  padding: 20px;
-  color: #fff;
+  width: var(--sidebar-width);
+  background-color: var(--secondary-color);
+  color: #ecf0f1;
   display: flex;
   flex-direction: column;
+  position: fixed;
+  height: 100vh;
+  z-index: 100;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
 
-.sidebar h2 {
-  margin-bottom: 30px;
-  font-size: 22px;
+.admin-title {
+  padding: 30px 20px;
+  font-size: 1.5rem;
+  font-weight: 700;
   text-align: center;
-  border-bottom: 2px solid #fff;
-  padding-bottom: 15px;
-}
-
-.sidebar button {
-  background: none;
-  border: none;
-  color: #fff;
-  text-align: left;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-size: 16px;
-  width: 100%;
-  transition: background 0.3s ease;
-}
-
-.sidebar button:hover {
-  background-color: #1abc9c;
+  margin: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  color: var(--accent-color);
 }
 
 .sidebar-link {
-  text-decoration: none;
-  display: block;
+  background: none;
+  border: none;
+  color: #bdc3c7;
+  text-align: left;
+  padding: 15px 25px;
+  cursor: pointer;
+  font-size: 1.05rem;
   width: 100%;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+  border-left: 4px solid transparent;
 }
 
-.sidebar button:focus {
-  outline: none;
+.sidebar-link:hover {
+  background-color: rgba(255,255,255,0.05);
+  color: #fff;
+  border-left-color: var(--accent-color);
 }
 
+.sidebar-link.active {
+  background-color: rgba(255,255,255,0.1);
+  color: #fff;
+  border-left-color: var(--accent-color);
+}
+
+/* Main Content Styles */
 .dashboard-content {
   flex: 1;
-  background-color: #ecf0f1;
-  padding: 40px;
+  margin-left: var(--sidebar-width);
+  padding: 30px;
+  background-color: var(--bg-color);
 }
 
 .dashboard-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #fff;
+  padding: 15px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
   margin-bottom: 30px;
 }
 
 .dashboard-header h2 {
-  font-size: 26px;
-  color: #34495e;
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--secondary-color);
 }
 
 .profile {
   display: flex;
   align-items: center;
-  font-size: 16px;
-  color: #34495e;
+  gap: 15px;
 }
 
-.profile i {
-  font-size: 30px;
-  margin-right: 10px;
+.profile-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-color);
 }
 
 .logout-btn {
-  background-color: #e74c3c;
+  background-color: var(--error-color);
   color: #fff;
   border: none;
-  padding: 8px 15px;
+  padding: 10px 20px;
+  border-radius: 8px;
   cursor: pointer;
-  margin-left: 20px;
-  border-radius: 5px;
-  font-size: 14px;
+  font-weight: 600;
+  transition: opacity 0.2s;
 }
 
 .logout-btn:hover {
-  background-color: #c0392b;
+  opacity: 0.9;
+}
+
+/* Section Styles */
+.home-section, .registered-workshops-section {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 h3 {
-  color: #34495e;
-  font-size: 22px;
-  margin-bottom: 15px;
+  color: var(--secondary-color);
+  margin-bottom: 25px;
+  font-size: 1.4rem;
 }
 
-p {
-  color: #7f8c8d;
-  font-size: 16px;
-  line-height: 1.6;
-}
-.profile-icon {
-  width: 40px;
-  height: 40px;
-  margin-right: 8px;
-  vertical-align: middle;
-}
-
-.dashboard {
-  display: flex;
-  padding: 20px;
-}
-
-.dashboard-content {
-  flex-grow: 1;
-  margin-left: 250px; 
-  padding: 20px;
-}
-
-h2 {
-  margin-bottom: 20px;
-  color: var(--primary-color);
-}
-
-h3 {
-  margin: 20px 0 15px;
-  color: var(--primary-color);
-}
-
-.search-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-.workshops-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+/* Workshop Count Box */
+.workshop-count-box {
+  background: linear-gradient(135deg, var(--primary-color), #3498db);
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  display: inline-flex;
+  align-items: center;
   gap: 20px;
+  box-shadow: 0 10px 20px rgba(74, 144, 226, 0.2);
+}
+
+.workshop-count-box h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* Registered Workshops Card Grid */
+.registered-workshops-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+.registered-workshops-section h3 {
+  grid-column: 1 / -1;
 }
 
 .workshop-card {
-  background-color: var(--secondary-color);
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
+  background: var(--card-bg);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
 }
 
 .workshop-card:hover {
-  transform: scale(1.02);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
 }
 
 .workshop-card h4 {
-  margin-bottom: 10px;
+  margin: 0 0 15px 0;
   color: var(--primary-color);
+  font-size: 1.3rem;
 }
 
-.register-btn {
-  background-color: var(--primary-color);
+.workshop-card p {
+  margin: 8px 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.workshop-card strong {
   color: var(--secondary-color);
+}
+
+.material-download-btn {
+  margin-top: auto;
+  background-color: var(--accent-color);
+  color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 12px;
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-.register-btn:hover {
-  background-color: #003366; 
-}
-
-.modal {
-  display: flex;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
+  font-weight: 600;
+  transition: background 0.3s;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
 }
 
-.modal-content {
-  background-color: var(--secondary-color);
-  padding: 40px;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  position: relative;
+.material-download-btn:hover {
+  background-color: #16a085;
 }
 
-.close {
-  position: absolute;
-  right: 15px;
-  top: 10px;
-  color: #aaa;
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close:hover {
-  color: #d9534f;
-}
-
-.notification {
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.notification.success {
-  background-color: #d4edda; 
-  color: #155724; 
-}
-
-.notification.error {
-  background-color: #f8d7da; 
-  color: #721c24;
-}
-
-@media (max-width: 768px) {
-  .dashboard {
-    flex-direction: column;
-  }
-
-  .dashboard-content {
-    margin-left: 0; 
-  }
-
-  .workshops-grid {
-    grid-template-columns: 1fr; 
-  }
-}
-
-
-.home-section {
-  padding: 20px;
-}
-
-.horizontal-layout {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  flex-wrap: wrap; 
-}
-
-.workshop-count-box {
-  width: calc(16.66% - 20px); 
-  padding: 20px;
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 20px; 
-  height: 300px; 
-  display: flex; 
-  flex-direction: column; 
-  justify-content: center; 
-  align-items: center; 
-}
-
-.workshop-count-box img {
-  margin-bottom: 10px; 
-}
-
-@media (max-width: 1200px) {
-  .workshop-count-box {
-    width: calc(20% - 20px); 
-  }
-}
-
-@media (max-width: 900px) {
-  .workshop-count-box {
-    width: calc(25% - 20px); 
-  }
-}
-
-@media (max-width: 600px) {
-  .workshop-count-box {
-    width: calc(50% - 20px); 
-  }
-}
-
-@media (max-width: 400px) {
-  .workshop-count-box {
-    width: 100%; 
-  }
-}
-
-
-.download-buttons {
-  margin-bottom: 20px;
-}
-
-.download-btn {
-  margin-right: 10px;
-  padding: 10px 15px;
-  background-color: #fbfcfb;
-  color: rgb(10, 9, 9);
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.download-btn:hover {
-  background-color: #45a049;
-}
-
-.dashboard1 {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
+/* Chatbot Styles */
 .chatbot-button {
   position: fixed;
-  bottom: 20px;
-  right: 10px;
-  background-color: navy;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--primary-color);
   color: white;
-  font-size: 28px;
-  padding: 20px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   border: none;
   cursor: pointer;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  transition: transform 0.3s;
+  z-index: 1000;
 }
 
 .chatbot-button:hover {
-  background-color: navy;
+  transform: scale(1.1);
 }
 
 .chatbot-popup {
   position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 450px;  
-  height: 500px;  
-  background-color: f0f0f0;
-  border-radius: 8px;
+  bottom: 100px;
+  right: 30px;
+  width: 380px;
+  height: 500px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
   overflow: hidden;
-  z-index: 9999;
+  z-index: 1000;
+  animation: slideIn 0.3s ease;
 }
 
-.chatbot-popup iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 0;
+    overflow: hidden;
+  }
+  
+  .dashboard-content {
+    margin-left: 0;
+    padding: 15px;
+  }
+  
+  .dashboard-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .profile {
+    width: 100%;
+    justify-content: center;
+  }
+}

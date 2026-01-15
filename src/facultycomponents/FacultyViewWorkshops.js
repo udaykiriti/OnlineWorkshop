@@ -172,7 +172,7 @@ const FacultyViewWorkshops = () => {
         <button onClick={() => navigate("/faculty-view-users")}>
         <UserOutlined style={{ marginRight: "8px" }} /> View Users
         </button>
-        <button onClick={() => navigate("/faculty-view-workshops")}>
+        <button onClick={() => navigate("/faculty-view-workshops")} className="active">
         <AppstoreAddOutlined style={{ marginRight: "8px" }} />View Workshops
         </button>
         <button onClick={() => navigate("/faculty-attendance")}>

@@ -70,7 +70,7 @@ const FacultyDashboard = () => {
         <h2 className="admin-title">Faculty Dashboard</h2>
 
         {/* Navigation buttons */}
-        <button onClick={() => handleNavigation("/faculty-dashboard")}>
+        <button onClick={() => handleNavigation("/faculty-dashboard")} className="active">
           <HomeOutlined style={{ marginRight: "8px" }} /> Home
         </button>
         <button onClick={() => handleNavigation("/faculty-view-users")}>

@@ -4,6 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { HomeOutlined, AppstoreAddOutlined, UnorderedListOutlined, CheckCircleOutlined, UserOutlined } from "@ant-design/icons";
 import { Card, Button, Input } from "antd"; 
+import "./StudentSettings.css";
 
 const StudentSettings = () => {
   const navigate = useNavigate();
@@ -108,7 +109,7 @@ const StudentSettings = () => {
         <button onClick={() => navigate("/student-dashboard/student-attendance")} className="sidebar-link">
           <CheckCircleOutlined style={{ marginRight: "8px" }} /> Attendance
         </button>
-        <button onClick={() => navigate("/student-dashboard/student-settings")} className="sidebar-link">
+        <button onClick={() => navigate("/student-dashboard/student-settings")} className="sidebar-link active">
           <UserOutlined style={{ marginRight: "8px" }} /> Profile
         </button>
       </div>

@@ -109,7 +109,7 @@ const FacultyViewUsers = () => {
         <button onClick={() => navigate("/faculty-dashboard")}>
           <HomeOutlined style={{ marginRight: "8px" }} /> Home
         </button>
-        <button onClick={() => navigate("/faculty-view-users")}>
+        <button onClick={() => navigate("/faculty-view-users")} className="active">
           <UserOutlined style={{ marginRight: "8px" }} /> View Users
         </button>
         <button onClick={() => navigate("/faculty-view-workshops")}>

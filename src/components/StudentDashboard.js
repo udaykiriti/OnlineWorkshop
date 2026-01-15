@@ -75,19 +75,19 @@ function StudentDashboard() {
     <div className="dashboard1">
       <div className="sidebar">
         <h2 className="admin-title">Student Dashboard</h2>
-        <button onClick={() => handleNavigation("home")} className="sidebar-link" aria-label="Go to Home">
+        <button onClick={() => handleNavigation("home")} className={`sidebar-link ${currentSection === "home" ? "active" : ""}`} aria-label="Go to Home">
           <HomeOutlined style={{ marginRight: "8px" }} /> Home
         </button>
-        <button onClick={() => handleNavigation("registration")} className="sidebar-link" aria-label="Workshop Registration">
+        <button onClick={() => handleNavigation("registration")} className={`sidebar-link ${currentSection === "registration" ? "active" : ""}`} aria-label="Workshop Registration">
           <AppstoreAddOutlined style={{ marginRight: "8px" }} /> Workshop Registration
         </button>
-        <button onClick={() => handleNavigation("registered-workshops")} className="sidebar-link" aria-label="View Registered Workshops">
+        <button onClick={() => handleNavigation("registered-workshops")} className={`sidebar-link ${currentSection === "registered-workshops" ? "active" : ""}`} aria-label="View Registered Workshops">
           <UnorderedListOutlined style={{ marginRight: "8px" }} /> Registered Workshops
         </button>
-        <button onClick={() => handleNavigation("attendance")} className="sidebar-link" aria-label="View Attendance">
+        <button onClick={() => handleNavigation("attendance")} className={`sidebar-link ${currentSection === "attendance" ? "active" : ""}`} aria-label="View Attendance">
           <CheckCircleOutlined style={{ marginRight: "8px" }} /> Attendance
         </button>
-        <button onClick={() => handleNavigation("settings")} className="sidebar-link" aria-label="Open Settings">
+        <button onClick={() => handleNavigation("settings")} className={`sidebar-link ${currentSection === "settings" ? "active" : ""}`} aria-label="Open Settings">
           <UserOutlined style={{ marginRight: "8px" }} /> Profile
         </button>
       </div>

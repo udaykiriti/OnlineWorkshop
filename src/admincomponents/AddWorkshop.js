@@ -5,6 +5,7 @@ import { Input, Button, DatePicker, TimePicker, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import "react-toastify/dist/ReactToastify.css";
 import "./AdminDashboard.css";
+import "./AddWorkshop.css";
 import "./alerts.css";
 import profileIcon from "./profile-icon.jpg";
 import dayjs from "dayjs";
@@ -94,7 +95,7 @@ const AddWorkshop = () => {
       <div className="sidebar">
         <h2 className="admin-title">Admin Dashboard</h2>
         <button onClick={() => navigate("/admin-dashboard")}>Home</button>
-        <button onClick={() => navigate("/add-workshop")}>Add Workshop</button>
+        <button onClick={() => navigate("/add-workshop")} className="active">Add Workshop</button>
         <button onClick={() => navigate("/view-workshops")}>View Workshops</button>
         <button onClick={() => navigate("/manage-users")}>Manage Users</button>
         <button onClick={() => navigate("/faculty-management")}>Faculty Management</button>
@@ -115,7 +116,7 @@ const AddWorkshop = () => {
         <div className="workshop-form-container">
           <h3>Add New Workshop</h3>
           <form onSubmit={handleSubmit} className="workshop-form">
-            <div className="card">
+            <div className="form-group full-width">
               <label>Workshop Name</label>
               <Input
                 type="text"
@@ -127,28 +128,30 @@ const AddWorkshop = () => {
               />
             </div>
 
-            <div className="card">
-              <label>Date</label>
-              <DatePicker
-                value={workshopData.date ? dayjs(workshopData.date) : null}
-                onChange={(date) => setWorkshopData({ ...workshopData, date })}
-                style={{ width: "100%" }}
-                required
-              />
+            <div className="form-row">
+              <div className="form-group">
+                <label>Date</label>
+                <DatePicker
+                  value={workshopData.date ? dayjs(workshopData.date) : null}
+                  onChange={(date) => setWorkshopData({ ...workshopData, date })}
+                  style={{ width: "100%" }}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Time</label>
+                <TimePicker
+                  value={workshopData.time ? dayjs(workshopData.time) : null}
+                  onChange={(time) => setWorkshopData({ ...workshopData, time })}
+                  format="HH:mm"
+                  style={{ width: "100%" }}
+                  required
+                />
+              </div>
             </div>
 
-            <div className="card">
-              <label>Time</label>
-              <TimePicker
-                value={workshopData.time ? dayjs(workshopData.time) : null}
-                onChange={(time) => setWorkshopData({ ...workshopData, time })}
-                format="HH:mm"
-                style={{ width: "100%" }}
-                required
-              />
-            </div>
-
-            <div className="card">
+            <div className="form-group full-width">
               <label>Meeting Link</label>
               <Input
                 type="url"
@@ -160,7 +163,7 @@ const AddWorkshop = () => {
               />
             </div>
 
-            <div className="card">
+            <div className="form-group full-width">
               <label>Description</label>
               <Input.TextArea
                 name="description"
@@ -172,29 +175,31 @@ const AddWorkshop = () => {
               />
             </div>
 
-            <div className="card">
-              <label>Instructor</label>
-              <Input
-                type="text"
-                name="instructor"
-                value={workshopData.instructor}
-                onChange={handleChange}
-                placeholder="Enter instructor name"
-                required
-              />
-            </div>
+            <div className="form-row">
+              <div className="form-group">
+                <label>Instructor</label>
+                <Input
+                  type="text"
+                  name="instructor"
+                  value={workshopData.instructor}
+                  onChange={handleChange}
+                  placeholder="Enter instructor name"
+                  required
+                />
+              </div>
 
-            <div className="card">
-              <label>Workshop Material</label>
-              <Upload
-                onChange={(info) => handleFileChange(info.file)}
-                beforeUpload={() => false}
-                accept=".pdf,.doc,.docx"
-                showUploadList={false}
-              >
-                <Button icon={<UploadOutlined />}>Select Material</Button>
-              </Upload>
-              {workshopData.material && <p>{workshopData.material.name}</p>}
+              <div className="form-group">
+                <label>Workshop Material</label>
+                <Upload
+                  onChange={(info) => handleFileChange(info.file)}
+                  beforeUpload={() => false}
+                  accept=".pdf,.doc,.docx"
+                  showUploadList={false}
+                >
+                  <Button icon={<UploadOutlined />} className="upload-btn">Select Material</Button>
+                </Upload>
+                {workshopData.material && <span className="file-name">{workshopData.material.name}</span>}
+              </div>
             </div>
 
             <Button type="primary" htmlType="submit" block className="submit-btn">

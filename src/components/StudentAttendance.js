@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./StudentDashboard.css";
+import "./StudentAttendance.css";
 import profileIcon from "./profile-icon.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -103,7 +103,7 @@ const StudentAttendance = () => {
         <button onClick={() => navigate("/student-dashboard/registered-workshops")} className="sidebar-link">
           <UnorderedListOutlined style={{ marginRight: "8px" }} /> Registered Workshops
         </button>
-        <button onClick={() => navigate("/student-dashboard/student-attendance")} className="sidebar-link">
+        <button onClick={() => navigate("/student-dashboard/student-attendance")} className="sidebar-link active">
           <CheckCircleOutlined style={{ marginRight: "8px" }} /> Attendance
         </button>
         <button onClick={() => navigate("/student-dashboard/student-settings")} className="sidebar-link">
@@ -128,37 +128,42 @@ const StudentAttendance = () => {
         ) : (
           <>
             <h3>Your Attendance Records</h3>
-            <div className="download-buttons" style={{ marginBottom: "20px" }}>
-              
+            <div className="download-buttons">
               <button onClick={downloadPDF} className="download-btn">Download as PDF</button>
               <button onClick={downloadExcel} className="download-btn">Download as Excel</button>
             </div>
 
             {attendanceRecords.length > 0 ? (
-              <table >
-                <thead>
-                  <tr style={{color:"#004080"}}>
-                    <th>Sno</th>
-                    <th>Username</th>
-                    <th>Workshop Name</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Present</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {attendanceRecords.map((record, index) => (
-                    <tr key={index}>
-                      <td>{index+1}</td>
-                      <td>{username}</td>
-                      <td>{record.workshopName}</td>
-                      <td>{record.date}</td>
-                      <td>{record.time}</td>
-                      <td>{record.isPresent ? "Yes" : "No"}</td>
+              <div className="attendance-table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Sno</th>
+                      <th>Username</th>
+                      <th>Workshop Name</th>
+                      <th>Date</th>
+                      <th>Time</th>
+                      <th>Present</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {attendanceRecords.map((record, index) => (
+                      <tr key={index}>
+                        <td>{index+1}</td>
+                        <td>{username}</td>
+                        <td>{record.workshopName}</td>
+                        <td>{record.date}</td>
+                        <td>{record.time}</td>
+                        <td>
+                          <span className={record.isPresent ? "status-present" : "status-absent"}>
+                            {record.isPresent ? "Yes" : "No"}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             ) : (
               <p>No attendance records found.</p>
             )}

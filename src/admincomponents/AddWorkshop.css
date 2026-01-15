@@ -1,0 +1,176 @@
+/* Modern and Aligned Add Workshop CSS */
+
+.dashboard1 {
+  display: flex;
+  min-height: 100vh;
+  /* Premium modern gradient background */
+  background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.sidebar {
+  width: 260px;
+  /* Consistent professional dark sidebar */
+  background-color: #1a252f;
+  color: #ecf0f1;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100vh;
+  z-index: 100;
+  box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+}
+
+.sidebar button {
+  background: none;
+  border: none;
+  color: #bdc3c7;
+  text-align: left;
+  padding: 15px 25px;
+  cursor: pointer;
+  font-size: 1.05rem;
+  width: 100%;
+  transition: all 0.2s ease;
+  border-left: 4px solid transparent;
+}
+
+.sidebar button:hover, .sidebar button.active {
+  background-color: rgba(255,255,255,0.1);
+  color: #fff;
+  border-left-color: #3498db;
+}
+
+.dashboard-content {
+  flex: 1;
+  margin-left: 260px;
+  padding: 40px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 15px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  margin-bottom: 40px;
+}
+
+.workshop-form-container {
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.workshop-form-container h3 {
+  margin-top: 0;
+  margin-bottom: 35px;
+  color: #2c3e50;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+}
+
+.workshop-form-container h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 4px;
+  background: #3498db;
+  border-radius: 2px;
+}
+
+.workshop-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #34495e;
+  font-size: 0.9rem;
+  margin-left: 2px;
+}
+
+/* Ant Design Component Overrides */
+.ant-input, .ant-picker, .ant-input-affix-wrapper {
+  border-radius: 8px !important;
+  padding: 10px 15px !important;
+  border: 1px solid #dcdcdc !important;
+  transition: all 0.3s ease !important;
+}
+
+.ant-input:hover, .ant-picker:hover {
+  border-color: #3498db !important;
+}
+
+.ant-input:focus, .ant-picker-focused {
+  border-color: #3498db !important;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1) !important;
+}
+
+.upload-btn {
+  width: 100%;
+  height: 45px !important;
+  border-radius: 8px !important;
+  border: 1px dashed #3498db !important;
+  color: #3498db !important;
+  background: rgba(52, 152, 219, 0.02) !important;
+}
+
+.file-name {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin-top: 5px;
+  word-break: break-all;
+}
+
+.submit-btn {
+  height: 55px !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  border-radius: 10px !important;
+  margin-top: 20px;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%) !important;
+  border: none !important;
+  box-shadow: 0 10px 20px rgba(52, 152, 219, 0.2) !important;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(52, 152, 219, 0.3) !important;
+}
+
+@media (max-width: 768px) {
+  .dashboard-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
