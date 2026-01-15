@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { ToastContainer, toast } from "react-toastify"; 
 import "react-toastify/dist/ReactToastify.css"; 
 import "../layout/AdminDashboard.css";
@@ -6,43 +7,61 @@ import { DeleteOutlined } from '@ant-design/icons';
 import { jsPDF } from "jspdf";
 import "jspdf-autotable"; 
 import * as XLSX from "xlsx"; 
+import { Skeleton } from "antd";
 import AdminLayout from "../layout/AdminLayout";
 import api from "../../api";
 
 const ViewWorkshops = () => {
-  const [workshops, setWorkshops] = useState([]);
+  const queryClient = useQueryClient();
   const [selectedWorkshop, setSelectedWorkshop] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [file, setFile] = useState(null);
 
-  useEffect(() => {
-    const fetchWorkshops = async () => {
-      try {
-        const response = await api.get("/api/workshops");
-        setWorkshops(response.data);
-      } catch (error) {
-        console.error("Error fetching workshops:", error);
-      }
-    };
-    fetchWorkshops();
-  }, []);
+  // Fetch workshops with React Query
+  const { data: workshops = [], isLoading } = useQuery({
+    queryKey: ["workshops"],
+    queryFn: async () => {
+      const response = await api.get("/api/workshops");
+      return response.data;
+    },
+    onError: () => {
+      toast.error("Failed to load workshops.");
+    },
+  });
+
+  // Mutations
+  const deleteMutation = useMutation({
+    mutationFn: (id) => api.delete(`/api/workshops/${id}`),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["workshops"]);
+      toast.success("Workshop deleted successfully.");
+    },
+    onError: () => {
+      toast.error("Error deleting workshop.");
+    }
+  });
+
+  const updateMutation = useMutation({
+    mutationFn: (formData) => api.put(`/api/workshops/${selectedWorkshop.id}`, formData),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["workshops"]);
+      handleModalClose();
+      toast.success("Workshop updated successfully.");
+    },
+    onError: () => {
+      toast.error("Error updating workshop.");
+    }
+  });
 
   const handleUpdateWorkshop = (workshop) => {
     setSelectedWorkshop(workshop);
     setModalOpen(true);
   };
 
-  const handleDeleteWorkshop = async (id) => {
+  const handleDeleteWorkshop = (id) => {
     if (window.confirm("Are you sure you want to delete this workshop?")) {
-      try {
-        await api.delete(`/api/workshops/${id}`);
-        setWorkshops(workshops.filter((workshop) => workshop.id !== id));
-        toast.success("Workshop deleted successfully.");
-      } catch (error) {
-        console.error("Error deleting workshop:", error);
-        toast.error("Error deleting workshop.");
-      }
+      deleteMutation.mutate(id);
     }
   };
 
@@ -52,7 +71,7 @@ const ViewWorkshops = () => {
     setFile(null); 
   };
 
-  const handleUpdate = async (e) => {
+  const handleUpdate = (e) => {
     e.preventDefault();
 
     const formData = new FormData();
@@ -66,20 +85,7 @@ const ViewWorkshops = () => {
       formData.append("material", file);
     }
 
-    try {
-      const response = await api.put(`/api/workshops/${selectedWorkshop.id}`, formData);
-      const updatedWorkshop = response.data;
-      setWorkshops(
-        workshops.map((workshop) =>
-          workshop.id === updatedWorkshop.id ? updatedWorkshop : workshop
-        )
-      );
-      handleModalClose();
-      toast.success("Workshop updated successfully.");
-    } catch (error) {
-      console.error("Error updating workshop:", error);
-      toast.error("Error updating workshop.");
-    }
+    updateMutation.mutate(formData);
   };
 
   const filteredWorkshops = workshops.filter((workshop) =>
@@ -135,7 +141,9 @@ const ViewWorkshops = () => {
         <button onClick={downloadExcel} className="download-btn">Download as Excel</button>
       </div>
 
-      {filteredWorkshops.length > 0 ? (
+      {isLoading ? (
+        <Skeleton active paragraph={{ rows: 10 }} />
+      ) : filteredWorkshops.length > 0 ? (
         <table className="workshops-table">
           <thead>
             <tr>

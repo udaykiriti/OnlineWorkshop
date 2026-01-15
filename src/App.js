@@ -5,6 +5,8 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
+import { QueryClientProvider } from "@tanstack/react-query";
+import queryClient from "./queryClient";
 import "./App.css";
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
@@ -34,171 +36,173 @@ import AdminAttendance from "./admincomponents/attendance/AdminAttendance";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <Routes>
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
 
-        <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/" element={<Navigate to="/login" />} />
 
-        <Route
-          path="/student-dashboard"
-          element={
-            <ProtectedRoute
-              element={<StudentDashboard />}
-              requiredRole="student"
-            />
-          }
-        />
-        <Route
-          path="/student-dashboard/registration"
-          element={
-            <ProtectedRoute
-              element={<WorkshopRegistration />}
-              requiredRole="student"
-            />
-          }
-        />
-        <Route
-          path="/student-dashboard/registered-workshops"
-          element={
-            <ProtectedRoute
-              element={<RegisteredWorkshops />}
-              requiredRole="student"
-            />
-          }
-        />
-        <Route
-          path="/student-dashboard/student-attendance"
-          element={
-            <ProtectedRoute
-              element={<StudentAttendance />}
-              requiredRole="student"
-            />
-          }
-        />
-        <Route
-          path="/student-dashboard/student-settings"
-          element={
-            <ProtectedRoute
-              element={<StudentSettings />}
-              requiredRole="student"
-            />
-          }
-        />
+          <Route
+            path="/student-dashboard"
+            element={
+              <ProtectedRoute
+                element={<StudentDashboard />}
+                requiredRole="student"
+              />
+            }
+          />
+          <Route
+            path="/student-dashboard/registration"
+            element={
+              <ProtectedRoute
+                element={<WorkshopRegistration />}
+                requiredRole="student"
+              />
+            }
+          />
+          <Route
+            path="/student-dashboard/registered-workshops"
+            element={
+              <ProtectedRoute
+                element={<RegisteredWorkshops />}
+                requiredRole="student"
+              />
+            }
+          />
+          <Route
+            path="/student-dashboard/student-attendance"
+            element={
+              <ProtectedRoute
+                element={<StudentAttendance />}
+                requiredRole="student"
+              />
+            }
+          />
+          <Route
+            path="/student-dashboard/student-settings"
+            element={
+              <ProtectedRoute
+                element={<StudentSettings />}
+                requiredRole="student"
+              />
+            }
+          />
 
-        <Route
-          path="/faculty-dashboard"
-          element={
-            <ProtectedRoute
-              element={<FacultyDashboard />}
-              requiredRole="faculty"
-            />
-          }
-        />
-        <Route
-          path="/faculty-attendance"
-          element={
-            <ProtectedRoute
-              element={<FacultyAttendance />}
-              requiredRole="faculty"
-            />
-          }
-        />
-        <Route
-          path="/faculty-view-workshops"
-          element={
-            <ProtectedRoute
-              element={<FacultyViewWorkshops />}
-              requiredRole="faculty"
-            />
-          }
-        />
-        <Route
-          path="/faculty-view-users"
-          element={
-            <ProtectedRoute
-              element={<FacultyViewUsers />}
-              requiredRole="faculty"
-            />
-          }
-        />
-        <Route
-          path="/faculty-settings"
-          element={
-            <ProtectedRoute
-              element={<FacultySettings />}
-              requiredRole="faculty"
-            />
-          }
-        />
+          <Route
+            path="/faculty-dashboard"
+            element={
+              <ProtectedRoute
+                element={<FacultyDashboard />}
+                requiredRole="faculty"
+              />
+            }
+          />
+          <Route
+            path="/faculty-attendance"
+            element={
+              <ProtectedRoute
+                element={<FacultyAttendance />}
+                requiredRole="faculty"
+              />
+            }
+          />
+          <Route
+            path="/faculty-view-workshops"
+            element={
+              <ProtectedRoute
+                element={<FacultyViewWorkshops />}
+                requiredRole="faculty"
+              />
+            }
+          />
+          <Route
+            path="/faculty-view-users"
+            element={
+              <ProtectedRoute
+                element={<FacultyViewUsers />}
+                requiredRole="faculty"
+              />
+            }
+          />
+          <Route
+            path="/faculty-settings"
+            element={
+              <ProtectedRoute
+                element={<FacultySettings />}
+                requiredRole="faculty"
+              />
+            }
+          />
 
-        <Route
-          path="/admin-dashboard"
-          element={
-            <ProtectedRoute element={<AdminDashboard />} requiredRole="admin" />
-          }
-        />
-        <Route
-          path="/add-workshop"
-          element={
-            <ProtectedRoute element={<AddWorkshop />} requiredRole="admin" />
-          }
-        />
-        <Route
-          path="/view-workshops"
-          element={
-            <ProtectedRoute element={<ViewWorkshops />} requiredRole="admin" />
-          }
-        />
-        <Route
-          path="/update-workshop"
-          element={
-            <ProtectedRoute element={<UpdateWorkshop />} requiredRole="admin" />
-          }
-        />
-        <Route
-          path="/view-material/:id"
-          element={
-            <ProtectedRoute element={<ViewMaterial />} requiredRole="admin" />
-          }
-        />
-        <Route
-          path="/faculty-management"
-          element={
-            <ProtectedRoute
-              element={<FacultyManagement />}
-              requiredRole="admin"
-            />
-          }
-        />
-        <Route
-          path="/admin-attendance"
-          element={
-            <ProtectedRoute
-              element={<AdminAttendance />}
-              requiredRole="admin"
-            />
-          }
-        />
-        <Route
-          path="/manage-users"
-          element={
-            <ProtectedRoute element={<ManageUsers />} requiredRole="admin" />
-          }
-        />
-        <Route
-          path="/settings"
-          element={
-            <ProtectedRoute element={<Settings />} requiredRole="admin" />
-          }
-        />
+          <Route
+            path="/admin-dashboard"
+            element={
+              <ProtectedRoute element={<AdminDashboard />} requiredRole="admin" />
+            }
+          />
+          <Route
+            path="/add-workshop"
+            element={
+              <ProtectedRoute element={<AddWorkshop />} requiredRole="admin" />
+            }
+          />
+          <Route
+            path="/view-workshops"
+            element={
+              <ProtectedRoute element={<ViewWorkshops />} requiredRole="admin" />
+            }
+          />
+          <Route
+            path="/update-workshop"
+            element={
+              <ProtectedRoute element={<UpdateWorkshop />} requiredRole="admin" />
+            }
+          />
+          <Route
+            path="/view-material/:id"
+            element={
+              <ProtectedRoute element={<ViewMaterial />} requiredRole="admin" />
+            }
+          />
+          <Route
+            path="/faculty-management"
+            element={
+              <ProtectedRoute
+                element={<FacultyManagement />}
+                requiredRole="admin"
+              />
+            }
+          />
+          <Route
+            path="/admin-attendance"
+            element={
+              <ProtectedRoute
+                element={<AdminAttendance />}
+                requiredRole="admin"
+              />
+            }
+          />
+          <Route
+            path="/manage-users"
+            element={
+              <ProtectedRoute element={<ManageUsers />} requiredRole="admin" />
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute element={<Settings />} requiredRole="admin" />
+            }
+          />
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Router>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
+    </QueryClientProvider>
   );
 }
 

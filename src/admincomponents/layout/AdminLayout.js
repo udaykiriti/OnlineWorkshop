@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AdminSidebar from "./AdminSidebar";
 import AdminHeader from "./AdminHeader";
+import Breadcrumbs from "../common/Breadcrumbs";
 import "./AdminDashboard.css"; // Ensure global styles are applied
 
 const AdminLayout = ({ children }) => {
@@ -32,6 +33,7 @@ const AdminLayout = ({ children }) => {
           theme={theme} 
           toggleTheme={toggleTheme} 
         />
+        <Breadcrumbs />
         {children}
       </div>
     </div>

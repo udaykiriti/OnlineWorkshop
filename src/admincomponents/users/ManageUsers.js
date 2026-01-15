@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import * as XLSX from "xlsx";
+import { Skeleton } from "antd";
 import "../layout/AdminDashboard.css";
 import AdminLayout from "../layout/AdminLayout";
 import api from "../../api";
 
 const ManageUsers = () => {
-  const [users, setUsers] = useState([]);
+  const queryClient = useQueryClient();
   const [selectedUser, setSelectedUser] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [addUserModalOpen, setAddUserModalOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [newUser, setNewUser] = useState({
     username: "",
@@ -25,38 +26,62 @@ const ManageUsers = () => {
     gender: "",
   });
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      setLoading(true);
-      try {
-        const response = await api.get("/api/users");
-        setUsers(response.data);
-      } catch (error) {
-        console.error("Error fetching users:", error);
-        toast.error("Failed to load users.");
-      } finally {
-        setLoading(false);
-      }
-    };
+  // Fetch users with React Query
+  const { data: users = [], isLoading } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const response = await api.get("/api/users");
+      return response.data;
+    },
+    onError: () => {
+      toast.error("Failed to load users.");
+    },
+  });
 
-    fetchUsers();
-  }, []);
+  // Mutations
+  const deleteMutation = useMutation({
+    mutationFn: (id) => api.delete(`/api/users/${id}`),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["users"]);
+      toast.success("User deleted successfully.");
+    },
+    onError: () => {
+      toast.error("Error deleting user.");
+    }
+  });
+
+  const updateMutation = useMutation({
+    mutationFn: (user) => api.put(`/api/users/${user.id}`, user),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["users"]);
+      handleModalClose();
+      toast.success("User updated successfully.");
+    },
+    onError: () => {
+      toast.error("Error updating user.");
+    }
+  });
+
+  const addMutation = useMutation({
+    mutationFn: (user) => api.post("/api/users", user),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["users"]);
+      handleAddUserModalClose();
+      toast.success("User added successfully.");
+    },
+    onError: () => {
+      toast.error("Error adding user.");
+    }
+  });
 
   const handleUpdateUser = (user) => {
     setSelectedUser(user);
     setModalOpen(true);
   };
 
-  const handleDeleteUser = async (id) => {
+  const handleDeleteUser = (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
-      try {
-        await api.delete(`/api/users/${id}`);
-        setUsers(users.filter((user) => user.id !== id));
-        toast.success("User deleted successfully.");
-      } catch (error) {
-        console.error("Error deleting user:", error);
-        toast.error("Error deleting user.");
-      }
+      deleteMutation.mutate(id);
     }
   };
 
@@ -78,37 +103,15 @@ const ManageUsers = () => {
     });
   };
 
-  const handleUpdate = async (e) => {
+  const handleUpdate = (e) => {
     e.preventDefault();
     if (!selectedUser) return;
-    const updatedUser = {
-      ...selectedUser,
-    };
-
-    try {
-      const response = await api.put(`/api/users/${selectedUser.id}`, updatedUser);
-      const data = response.data;
-      setUsers(users.map((user) => (user.id === data.id ? data : user)));
-      handleModalClose();
-      toast.success("User updated successfully.");
-    } catch (error) {
-      console.error("Error updating user:", error);
-      toast.error("Error updating user.");
-    }
+    updateMutation.mutate(selectedUser);
   };
 
-  const handleAddUser = async (e) => {
+  const handleAddUser = (e) => {
     e.preventDefault();
-    try {
-      const response = await api.post("/api/users", newUser);
-      const data = response.data;
-      setUsers([...users, data]);
-      handleAddUserModalClose();
-      toast.success("User added successfully.");
-    } catch (error) {
-      console.error("Error adding user:", error);
-      toast.error("Error adding user.");
-    }
+    addMutation.mutate(newUser);
   };
 
   const filteredUsers = users.filter((user) =>
@@ -172,8 +175,8 @@ const ManageUsers = () => {
         <button onClick={downloadExcel} className="export-btn excel-btn">Export to Excel</button>
       </div>
 
-      {loading ? (
-        <p>Loading users...</p>
+      {isLoading ? (
+        <Skeleton active paragraph={{ rows: 10 }} />
       ) : filteredUsers.length > 0 ? (
         <table className="users-table">
           <thead>
@@ -230,6 +233,7 @@ const ManageUsers = () => {
             </span>
             <h2>Add User</h2>
             <form onSubmit={handleAddUser}>
+              {/* Form fields remain the same */}
               <input
                 type="text"
                 placeholder="Username"
