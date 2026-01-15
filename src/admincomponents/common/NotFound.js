@@ -1,5 +1,5 @@
 import React from "react";
-import "./NotFound.css";
+import "../layout/AdminDashboard.css";
 
 const NotFound = () => {
   return (

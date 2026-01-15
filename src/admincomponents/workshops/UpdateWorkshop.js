@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import "./AdminDashboard.css";
+import "../layout/AdminDashboard.css";
+import AdminLayout from "../layout/AdminLayout";
+import api from "../../api";
 
 const UpdateWorkshop = () => {
   const navigate = useNavigate();
@@ -22,19 +24,9 @@ const UpdateWorkshop = () => {
       instructor,
     };
 
-    fetch(`http://localhost:8081/api/workshops/${workshop.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedWorkshop),
-    })
-      .then((response) => {
-        if (response.ok) {
-          navigate("/view-workshops");
-        } else {
-          console.error("Failed to update workshop");
-        }
+    api.put(`/api/workshops/${workshop.id}`, updatedWorkshop)
+      .then(() => {
+        navigate("/view-workshops");
       })
       .catch((error) => {
         console.error("Error updating workshop:", error);
@@ -42,47 +34,55 @@ const UpdateWorkshop = () => {
   };
 
   return (
-    <div className="dashboard">
+    <AdminLayout>
       <h2>Update Workshop</h2>
-      <form onSubmit={handleUpdate}>
-        <div>
+      <form onSubmit={handleUpdate} className="workshop-form">
+        <div className="form-group">
           <label>Name:</label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
+            className="ant-input" // Reusing ant design classes if available or adding simple styling
+            style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Date:</label>
           <input
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
             required
+            className="ant-input"
+            style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Description:</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
+            className="ant-input"
+            style={{ width: '100%', padding: '8px', marginBottom: '10px', minHeight: '100px' }}
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Instructor:</label>
           <input
             type="text"
             value={instructor}
             onChange={(e) => setInstructor(e.target.value)}
             required
+            className="ant-input"
+            style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
           />
         </div>
-        <button type="submit">Update Workshop</button>
+        <button type="submit" className="submit-btn" style={{ width: 'auto', padding: '10px 20px' }}>Update Workshop</button>
       </form>
-    </div>
+    </AdminLayout>
   );
 };
 

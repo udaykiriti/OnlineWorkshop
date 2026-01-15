@@ -9,28 +9,28 @@ import "./App.css";
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
 import StudentDashboard from "./components/StudentDashboard";
-import AdminDashboard from "./admincomponents/AdminDashboard";
+import AdminDashboard from "./admincomponents/dashboard/AdminDashboard";
 import FacultyDashboard from "./facultycomponents/FacultyDashboard";
-import AddWorkshop from "./admincomponents/AddWorkshop";
-import ViewWorkshops from "./admincomponents/ViewWorkshops";
-import UpdateWorkshop from "./admincomponents/UpdateWorkshop";
-import ViewMaterial from "./admincomponents/ViewMaterial";
-import ManageUsers from "./admincomponents/ManageUsers";
-import FacultyManagement from "./admincomponents/FacultyManagement";
-import NotFound from "./admincomponents/NotFound";
+import AddWorkshop from "./admincomponents/workshops/AddWorkshop";
+import ViewWorkshops from "./admincomponents/workshops/ViewWorkshops";
+import UpdateWorkshop from "./admincomponents/workshops/UpdateWorkshop";
+import ViewMaterial from "./admincomponents/workshops/ViewMaterial";
+import ManageUsers from "./admincomponents/users/ManageUsers";
+import FacultyManagement from "./admincomponents/users/FacultyManagement";
+import NotFound from "./admincomponents/common/NotFound";
 import WorkshopRegistration from "./components/WorkshopRegistration";
 import RegisteredWorkshops from "./components/RegisteredWorkshops";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
-import Settings from "./admincomponents/Settings";
+import Settings from "./admincomponents/profile/Settings";
 import FacultySettings from "./facultycomponents/FacultySettings";
 import StudentSettings from "./components/StudentSettings";
 import FacultyViewWorkshops from "./facultycomponents/FacultyViewWorkshops";
 import FacultyViewUsers from "./facultycomponents/FacultyViewUsers";
 import FacultyAttendance from "./facultycomponents/FacultyAttendance";
 import StudentAttendance from "./components/StudentAttendance";
-import AdminAttendance from "./admincomponents/AdminAttendance";
+import AdminAttendance from "./admincomponents/attendance/AdminAttendance";
 
 function App() {
   return (

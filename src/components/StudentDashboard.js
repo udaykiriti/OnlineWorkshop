@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./StudentDashboard.css";
 import profileIcon from "./profile-icon.jpg";
-import { HomeOutlined, UnorderedListOutlined, AppstoreAddOutlined, CheckCircleOutlined, UserOutlined,MessageOutlined  } from "@ant-design/icons";
+import { HomeOutlined, UnorderedListOutlined, AppstoreAddOutlined, CheckCircleOutlined, UserOutlined, MessageOutlined, BulbOutlined, BulbFilled } from "@ant-design/icons";
 import Chatbot from "./Chatbot";
+import { Skeleton, Button } from "antd";
+import { motion, AnimatePresence } from "framer-motion";
 
 function StudentDashboard() {
   const navigate = useNavigate();
@@ -11,7 +13,18 @@ function StudentDashboard() {
   const [currentSection, setCurrentSection] = useState("home");
   const [workshopCount, setWorkshopCount] = useState(0);
   const [workshops, setWorkshops] = useState([]);
-  const [isChatbotVisible, setIsChatbotVisible] = useState(false);  // State to control chatbot visibility
+  const [isChatbotVisible, setIsChatbotVisible] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
 
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
@@ -24,6 +37,7 @@ function StudentDashboard() {
   }, [navigate]);
 
   const fetchWorkshops = async (username) => {
+    setLoading(true);
     try {
       const response = await fetch(`http://localhost:8081/api/registration/workshops/${username}`);
       const workshops = await response.json();
@@ -31,6 +45,8 @@ function StudentDashboard() {
       setWorkshopCount(workshops.length);
     } catch (error) {
       console.error("Error fetching workshops:", error);
+    } finally {
+      setTimeout(() => setLoading(false), 800); // Small delay for smooth transition
     }
   };
 
@@ -66,9 +82,14 @@ function StudentDashboard() {
     window.location.href = `http://localhost:8081/api/workshops/materials/${material}`;
   };
 
-  // Toggle visibility of the chatbot
   const toggleChatbot = () => {
     setIsChatbotVisible(!isChatbotVisible);
+  };
+
+  const sectionVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 }
   };
 
   return (
@@ -95,57 +116,87 @@ function StudentDashboard() {
         <div className="dashboard-header">
           <h2>Welcome, {username || "Student"}!</h2>
           <div className="profile">
+            <Button 
+              type="text" 
+              icon={theme === "light" ? <BulbOutlined /> : <BulbFilled />} 
+              onClick={toggleTheme}
+              style={{ fontSize: "20px", marginRight: "10px", color: "var(--primary-color)" }}
+            />
             <img src={profileIcon} alt="Profile" className="profile-icon" />
             <button className="logout-btn" onClick={handleLogout}>Logout</button>
           </div>
         </div>
 
-        {currentSection === "home" && (
-          <div className="home-section">
-            <h3>Home Section</h3>
-
-            <div className="workshop-count-box">
-              <UnorderedListOutlined style={{ marginRight: "16px", fontSize: "29px", color: "darkblue" }} />
-              <h4>Total Registered Workshops: {workshopCount}</h4>
-            </div>
-          </div>
-        )}
-
-        {currentSection === "registration" && <h3>Workshop Registration Section</h3>}
-        
-        {currentSection === "registered-workshops" && (
-          <div className="registered-workshops-section">
-            <h3>Registered Workshops</h3>
-            {workshops.length > 0 ? (
-              workshops.map((workshop) => (
-                <div key={workshop.id} className="workshop-card">
-                  <h4>{workshop.name}</h4>
-                  <p><strong>Date:</strong> {workshop.date}</p>
-                  <p><strong>Time:</strong> {workshop.time}</p>
-                  <p><strong>Instructor:</strong> {workshop.instructor}</p>
-                  <p><strong>Description:</strong> {workshop.description}</p>
-                  <button onClick={() => handleMaterialDownload(workshop.material)} className="material-download-btn">
-                    Download Material
-                  </button>
+        <AnimatePresence mode="wait">
+          {loading ? (
+            <motion.div key="skeleton" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <Skeleton active paragraph={{ rows: 4 }} />
+              <div style={{ marginTop: "40px" }}>
+                <Skeleton.Button active size="large" shape="round" block style={{ height: "100px" }} />
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key={currentSection}
+              variants={sectionVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition={{ duration: 0.4 }}
+            >
+              {currentSection === "home" && (
+                <div className="home-section">
+                  <h3>Home Section</h3>
+                  <div className="workshop-count-box">
+                    <UnorderedListOutlined style={{ marginRight: "16px", fontSize: "29px", color: "#fff" }} />
+                    <h4>Total Registered Workshops: {workshopCount}</h4>
+                  </div>
                 </div>
-              ))
-            ) : (
-              <p>No workshops registered yet.</p>
-            )}
-          </div>
-        )}
+              )}
 
-        {currentSection === "settings" && <h3>Settings Section</h3>}
-        {currentSection === "attendance" && <h3>Attendance Section (Calendar removed for now)</h3>}
+              {currentSection === "registration" && <h3>Workshop Registration Section</h3>}
+              
+              {currentSection === "registered-workshops" && (
+                <div className="registered-workshops-section">
+                  <h3>Registered Workshops</h3>
+                  {workshops.length > 0 ? (
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "20px" }}>
+                      {workshops.map((workshop, index) => (
+                        <motion.div 
+                          key={workshop.id} 
+                          className="workshop-card"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                        >
+                          <h4>{workshop.name}</h4>
+                          <p><strong>Date:</strong> {workshop.date}</p>
+                          <p><strong>Time:</strong> {workshop.time}</p>
+                          <p><strong>Instructor:</strong> {workshop.instructor}</p>
+                          <p><strong>Description:</strong> {workshop.description}</p>
+                          <button onClick={() => handleMaterialDownload(workshop.material)} className="material-download-btn">
+                            Download Material
+                          </button>
+                        </motion.div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p>No workshops registered yet.</p>
+                  )}
+                </div>
+              )}
 
+              {currentSection === "settings" && <h3>Settings Section</h3>}
+              {currentSection === "attendance" && <h3>Attendance Section (Calendar removed for now)</h3>}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
-      {/* Floating Chatbot Button */}
       <button className="chatbot-button" onClick={toggleChatbot}>
          <MessageOutlined style={{ marginRight: "8px" }} />
        </button>
 
-      {/* Chatbot Component */}
       {isChatbotVisible && (
         <div className="chatbot-popup">
           <Chatbot />

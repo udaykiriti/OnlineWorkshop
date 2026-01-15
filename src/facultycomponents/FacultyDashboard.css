@@ -1,27 +1,40 @@
-/* Modern and Sleek Faculty Dashboard CSS */
-
 :root {
   --primary-color: #2c3e50;
   --secondary-color: #34495e;
   --accent-color: #3498db;
   --bg-color: #f4f7f6;
-  --text-color: #333;
-  --sidebar-width: 260px;
   --card-bg: #ffffff;
-  --error-color: #e74c3c;
-  --success-color: #2ecc71;
-  --hover-color: #1abc9c;
+  --text-color: #333;
+  --sidebar-bg: #1a252f;
+  --sidebar-hover: rgba(255, 255, 255, 0.1);
+  --header-bg: #ffffff;
+  --border-color: #e0e0e0;
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] {
+  --primary-color: #3498db;
+  --secondary-color: #ecf0f1;
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --text-color: #e0e0e0;
+  --sidebar-bg: #000000;
+  --header-bg: #1e1e1e;
+  --border-color: #333333;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background-color: var(--bg-color);
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
 }
 
 .dashboard1 {
@@ -29,81 +42,69 @@ body {
   min-height: 100vh;
 }
 
-/* Sidebar Styles */
 .sidebar {
-  width: var(--sidebar-width);
-  background-color: var(--primary-color);
-  color: #ecf0f1;
-  display: flex;
-  flex-direction: column;
-  position: fixed;
+  width: 260px;
   height: 100vh;
+  background-color: var(--sidebar-bg);
+  padding: 20px;
+  color: white;
+  position: fixed;
   z-index: 100;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
+  box-shadow: 4px 0 15px rgba(0,0,0,0.1);
 }
 
 .admin-title {
-  padding: 30px 20px;
+  padding: 20px 0;
   font-size: 1.4rem;
   font-weight: 700;
   text-align: center;
-  margin: 0;
+  margin-bottom: 20px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
-  color: var(--hover-color);
+  color: #1abc9c;
 }
 
 .sidebar button {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  color: #bdc3c7;
+  margin-bottom: 8px;
   background: none;
   border: none;
-  color: #bdc3c7;
-  text-align: left;
-  padding: 15px 25px;
   cursor: pointer;
-  font-size: 1.05rem;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  transition: all 0.2s ease;
-  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 1rem;
 }
 
-.sidebar button:hover {
-  background-color: rgba(255,255,255,0.05);
-  color: #fff;
-  border-left-color: var(--hover-color);
+.sidebar button:hover, .sidebar button.active {
+  background-color: var(--sidebar-hover);
+  color: white;
+  transform: translateX(5px);
 }
 
-.sidebar button.active {
-  background-color: rgba(255,255,255,0.1);
-  color: #fff;
-  border-left-color: var(--hover-color);
-}
-
-/* Main Content Styles */
 .dashboard-content {
-  flex: 1;
-  margin-left: var(--sidebar-width);
+  flex-grow: 1;
+  margin-left: 260px;
   padding: 30px;
   background-color: var(--bg-color);
-  transition: all 0.3s ease;
 }
 
 .dashboard-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fff;
+  background-color: var(--header-bg);
   padding: 15px 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow);
   margin-bottom: 30px;
 }
 
 .dashboard-header h2 {
-  margin: 0;
-  font-size: 1.5rem;
   color: var(--primary-color);
+  margin: 0;
 }
 
 .profile {
@@ -121,14 +122,14 @@ body {
 }
 
 .logout-btn {
-  background-color: var(--error-color);
-  color: #fff;
+  background-color: #e74c3c;
+  color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
+  transition: opacity 0.3s;
   font-weight: 600;
-  transition: opacity 0.2s;
 }
 
 .logout-btn:hover {
@@ -138,88 +139,13 @@ body {
 h3 {
   color: var(--primary-color);
   margin-bottom: 20px;
-  font-size: 1.4rem;
-  font-weight: 600;
-}
-
-/* Common Table Styles */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-th {
-  background-color: #f8f9fa;
-  text-align: left;
-  padding: 15px 20px;
-  color: var(--secondary-color);
-  font-weight: 600;
-  border-bottom: 2px solid #eee;
-}
-
-td {
-  padding: 15px 20px;
-  border-bottom: 1px solid #eee;
-  color: #555;
-}
-
-tr:hover {
-  background-color: #fcfcfc;
-}
-
-/* Form inputs & Selects */
-select, .search-input, input[type="text"], input[type="email"], input[type="date"], input[type="time"], textarea {
-  width: 100%;
-  padding: 12px 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-  margin-bottom: 20px;
-  outline: none;
-  transition: border-color 0.3s;
-}
-
-select:focus, .search-input:focus {
-  border-color: var(--accent-color);
-}
-
-/* Modals */
-.modal {
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background: #fff;
-  padding: 35px;
-  border-radius: 16px;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  position: relative;
-}
-
-.close {
-  position: absolute;
-  top: 15px; right: 20px;
   font-size: 1.5rem;
-  cursor: pointer;
-  color: #999;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .sidebar {
     width: 0;
+    padding: 0;
     overflow: hidden;
   }
   .dashboard-content {
