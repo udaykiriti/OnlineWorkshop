@@ -27,7 +27,7 @@ const ForgotPassword = () => {
 
     try {
       const response = await fetch(
-        "https://onlineworkshop-server-production.up.railway.app/api/auth/forgot-password",
+        "http://localhost:8081/api/auth/forgot-password",
         {
           method: "POST",
           headers: {

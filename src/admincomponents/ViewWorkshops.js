@@ -25,7 +25,7 @@ const ViewWorkshops = () => {
       setUsername(storedUsername);
     }
 
-    fetch("https://onlineworkshop-server-production.up.railway.app/api/workshops")
+    fetch("http://localhost:8081/api/workshops")
       .then((response) => response.json())
       .then((data) => {
         setWorkshops(data);
@@ -48,7 +48,7 @@ const ViewWorkshops = () => {
 
   const handleDeleteWorkshop = (id) => {
     if (window.confirm("Are you sure you want to delete this workshop?")) {
-      fetch(`https://onlineworkshop-server-production.up.railway.app/api/workshops/${id}`, {
+      fetch(`http://localhost:8081/api/workshops/${id}`, {
         method: "DELETE",
       })
         .then((response) => {
@@ -87,7 +87,7 @@ const ViewWorkshops = () => {
       formData.append("material", file);
     }
 
-    fetch(`https://onlineworkshop-server-production.up.railway.app/api/workshops/${selectedWorkshop.id}`, {
+    fetch(`http://localhost:8081/api/workshops/${selectedWorkshop.id}`, {
       method: "PUT",
       body: formData,
     })
@@ -222,7 +222,7 @@ const ViewWorkshops = () => {
                   <td>{workshop.instructor}</td>
                   <td>
                     <a
-                      href={`http://localhost:8080/api/workshops/materials/${workshop.material}`} 
+                      href={`http://localhost:8081/api/workshops/materials/${workshop.material}`} 
                       target="_blank"
                       rel="noopener noreferrer"
                     >

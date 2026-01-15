@@ -21,7 +21,7 @@ const RegisteredWorkshops = () => {
       if (username) {
         try {
           const response = await fetch(
-            `https://onlineworkshop-server-production.up.railway.app/api/registration/workshops/${username}`
+            `http://localhost:8081/api/registration/workshops/${username}`
           );
           const data = await response.json();
           setRegisteredWorkshops(data);
@@ -54,7 +54,7 @@ const RegisteredWorkshops = () => {
 
     try {
       const response = await fetch(
-        `https://onlineworkshop-server-production.up.railway.app/api/registration/${workshopId}?username=${username}`,
+        `http://localhost:8081/api/registration/${workshopId}?username=${username}`,
         {
           method: "DELETE",
         }
@@ -201,7 +201,7 @@ const RegisteredWorkshops = () => {
                 {workshop.material && (
                   <div className="workshop-material">
                     <a
-                      href={`http://localhost:8080/api/workshops/materials/${workshop.material}`}
+                      href={`http://localhost:8081/api/workshops/materials/${workshop.material}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="material-link"

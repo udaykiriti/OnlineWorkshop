@@ -33,7 +33,7 @@ const AdminDashboard = () => {
 
   const fetchGenderData = async () => {
     try {
-      const response = await axios.get("https://onlineworkshop-server-production.up.railway.app/users"); 
+      const response = await axios.get("http://localhost:8081/api/users"); 
       const data = response.data;
 
       const genderCounts = data.reduce((acc, user) => {
@@ -58,7 +58,7 @@ const AdminDashboard = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await axios.get("https://onlineworkshop-server-production.up.railway.app/api/users"); 
+      const response = await axios.get("http://localhost:8081/api/users"); 
       const data = response.data;
 
       const roleCounts = data.reduce((acc, user) => {
@@ -85,7 +85,7 @@ const AdminDashboard = () => {
 
   const fetchWorkshopsCount = async () => {
     try {
-      const response = await axios.get("https://onlineworkshop-server-production.up.railway.app/api/workshops"); 
+      const response = await axios.get("http://localhost:8081/api/workshops"); 
       const data = response.data;
       setTotalWorkshops(data.length); // Set workshops count
     } catch (error) {

@@ -25,7 +25,7 @@ const FacultyViewUsers = () => {
     const fetchUsers = async () => {
       setLoading(true);
       try {
-        const response = await fetch("https://onlineworkshop-server-production.up.railway.app/api/users");
+        const response = await fetch("http://localhost:8081/api/users");
         if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();
         setUsers(data);
@@ -48,7 +48,7 @@ const FacultyViewUsers = () => {
   const handleDeleteUser = async (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       try {
-        const response = await fetch(`https://onlineworkshop-server-production.up.railway.app/api/users/${id}`, {
+        const response = await fetch(`http://localhost:8081/api/users/${id}`, {
           method: "DELETE",
         });
         if (!response.ok) throw new Error("Failed to delete user.");
@@ -78,7 +78,7 @@ const FacultyViewUsers = () => {
 
     try {
       const response = await fetch(
-        `https://onlineworkshop-server-production.up.railway.app/api/users/${selectedUser.id}`,
+        `http://localhost:8081/api/users/${selectedUser.id}`,
         {
           method: "PUT",
           headers: {

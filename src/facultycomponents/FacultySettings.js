@@ -21,7 +21,7 @@ const FacultySettings = () => {
     const fetchFacultyProfile = async () => {
       try {
         const response = await fetch(
-          `https://onlineworkshop-server-production.up.railway.app/api/users/${facultyUsername}` 
+          `http://localhost:8081/api/users/${facultyUsername}` 
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -58,7 +58,7 @@ const FacultySettings = () => {
   const handleUpdateField = async (field) => {
     try {
       const response = await fetch(
-        `https://onlineworkshop-server-production.up.railway.app/api/users/${facultyUsername}`, 
+        `http://localhost:8081/api/users/${facultyUsername}`, 
         {
           method: "PUT",
           headers: {

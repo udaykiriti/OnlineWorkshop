@@ -62,7 +62,7 @@ const AddWorkshop = () => {
     formData.append("instructor", workshopData.instructor);
     formData.append("material", workshopData.material);
 
-    fetch("https://onlineworkshop-server-production.up.railway.app/api/workshops", {
+    fetch("http://localhost:8081/api/workshops", {
       method: "POST",
       body: formData,
     })

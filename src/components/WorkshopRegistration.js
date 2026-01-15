@@ -22,7 +22,7 @@ const WorkshopRegistration = () => {
 
   const fetchWorkshops = async () => {
     try {
-      const response = await fetch("https://onlineworkshop-server-production.up.railway.app/api/workshops");
+      const response = await fetch("http://localhost:8081/api/workshops");
       if (!response.ok) {
         throw new Error("Failed to fetch workshops");
       }
@@ -39,7 +39,7 @@ const WorkshopRegistration = () => {
     if (username) {
       try {
         const response = await fetch(
-          `https://onlineworkshop-server-production.up.railway.app/api/registration/workshops/${username}`
+          `http://localhost:8081/api/registration/workshops/${username}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch registered workshops");
@@ -56,7 +56,7 @@ const WorkshopRegistration = () => {
   const handleRegister = async (workshopId) => {
     const username = localStorage.getItem("username");
     try {
-      const response = await fetch("https://onlineworkshop-server-production.up.railway.app/api/registration", {
+      const response = await fetch("http://localhost:8081/api/registration", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -95,7 +95,7 @@ const WorkshopRegistration = () => {
   
     try {
       const response = await fetch(
-        `https://onlineworkshop-server-production.up.railway.app/api/registration/${workshopId}?username=${username}`,
+        `http://localhost:8081/api/registration/${workshopId}?username=${username}`,
         {
           method: "DELETE",
         }

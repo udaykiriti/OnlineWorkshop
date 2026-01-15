@@ -31,7 +31,7 @@ const ResetPassword = () => {
     // Try to send the reset password request
     try {
       await axios.post(
-        "https://onlineworkshop-server-production.up.railway.app/api/auth/reset-password", 
+        "http://localhost:8081/api/auth/reset-password", 
         { token, newPassword }
       );
       toast.success("Password reset successfully.");

@@ -38,7 +38,7 @@ function Signup() {
     try {
       // Make the POST request to register the user
       await axios.post(
-        "https://onlineworkshop-server-production.up.railway.app/api/auth/signup",
+        "http://localhost:8081/api/auth/signup",
         user
       );
 

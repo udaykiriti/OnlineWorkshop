@@ -22,7 +22,7 @@ const UpdateWorkshop = () => {
       instructor,
     };
 
-    fetch(`https://onlineworkshop-server-production.up.railway.app/api/workshops/${workshop.id}`, {
+    fetch(`http://localhost:8081/api/workshops/${workshop.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
