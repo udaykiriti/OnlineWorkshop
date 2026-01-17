@@ -12,20 +12,16 @@
 </div>
 
 <p align="center">
-  <img src="https://media.giphy.com/media/hzxvW5s5c30Ag/giphy.gif" width="100%" style="max-width: 600px;" alt="Online Workshop Animation" />
-</p>
-
-<p align="center">
-  <b>A modern, responsive frontend for the Online Workshop management system.</b>
+  <b>A modern frontend for the Online Workshop management system.</b>
 </p>
 
 ---
 
 ## About
 
-This repository hosts the frontend client for the **Online Workshop** application. It is built with **React** to provide a dynamic, seamless, and visually engaging user experience for students, faculty, and administrators.
+This repository hosts the frontend client for the **Online Workshop** application. It is built with **React** to provide a  visually engaging user experience for students or users, faculty, and administrators.
 
-The application recently underwent a major UI overhaul, featuring a **Glassmorphism** design language, smooth animations, and a fully responsive layout.
+The application recently underwent a major UI overhaul, featuring a **Glassmorphism**(some part) design language, smooth animations, and a fully responsive layout.
 
 ---
 
@@ -34,10 +30,10 @@ The application recently underwent a major UI overhaul, featuring a **Glassmorph
 ### Modern UI/UX
 *   **Glassmorphism Design:** Sleek, semi-transparent cards with soft shadows and blur effects.
 *   **Interactive Elements:** Smooth hover animations on buttons, inputs, and images.
-*   **Responsive Layout:** Seamless experience across Desktop, Tablet, and Mobile devices.
+*   **Responsive Layout:** Seamless experience across Desktop, Tablet, and Mobile devices(Not Perfect).
 
 ### Robust Authentication
-*   Secure **Login** and **Signup** with CAPTCHA protection.
+*   Secure **Login** and **Signup** with "CAPTCHA" protection.
 *   **Forgot Password** & **Reset Password** workflows.
 *   Role-based redirection (Student, Faculty, Admin).
 
@@ -81,7 +77,7 @@ Follow these steps to set up the project locally:
 1.  **Clone the repository:**
     ```bash
     git clone https://github.com/udaykiriti/onlineworkshop-frontend.git
-    cd onlineworkshop-frontend
+    cd Onlineworkshop
     ```
 
 2.  **Install dependencies:**
